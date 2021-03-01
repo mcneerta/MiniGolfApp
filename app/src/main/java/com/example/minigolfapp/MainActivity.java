@@ -11,6 +11,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void init() {
         TableLayout stk = (TableLayout) findViewById(R.id.table_main);
-        TableRow tbrow0 = new TableRow(this);
-        TextView tv0 = new TextView(this);
+        /*TextView tv0 = new TextView(this);
         tv0.setText(" Sl.No ");
         tv0.setTextColor(Color.WHITE);
         tbrow0.addView(tv0);
@@ -40,31 +42,21 @@ public class MainActivity extends AppCompatActivity {
         tv3.setText(" Stock Remaining ");
         tv3.setTextColor(Color.WHITE);
         tbrow0.addView(tv3);
-        stk.addView(tbrow0);
+        stk.addView(tbrow0);*/
+        int holes = 4;
         for (int i = 0; i < 25; i++) {
             TableRow tbrow = new TableRow(this);
-            EditText holeNumber = new EditText(this);
-            holeNumber.setInputType(InputType.TYPE_CLASS_NUMBER);
-           /* TextView t1v = new TextView(this);
-            t1v.setText("" + i);
-            t1v.setTextColor(Color.WHITE);
-            t1v.setGravity(Gravity.CENTER);
-            tbrow.addView(t1v);
-            TextView t2v = new TextView(this);
-            t2v.setText("Product " + i);
-            t2v.setTextColor(Color.WHITE);
-            t2v.setGravity(Gravity.CENTER);
-            tbrow.addView(t2v);
-            TextView t3v = new TextView(this);
-            t3v.setText("Rs." + i);
-            t3v.setTextColor(Color.WHITE);
-            t3v.setGravity(Gravity.CENTER);
-            tbrow.addView(t3v);
-            TextView t4v = new TextView(this);
-            t4v.setText("" + i * 15 / 32 * 10);
-            t4v.setTextColor(Color.WHITE);
-            t4v.setGravity(Gravity.CENTER);*/
-            tbrow.addView(holeNumber);
+            tbrow.setGravity(Gravity.LEFT);
+            List<EditText> Columns = new LinkedList<EditText>();
+            for (int j = 0; j < holes; j++) {
+                EditText row = new EditText(this);
+                row.setWidth(100);
+                row.setInputType(InputType.TYPE_CLASS_NUMBER);
+                Columns.add(row);
+            }
+            for (EditText hole : Columns) {
+                tbrow.addView(hole);
+            }
             stk.addView(tbrow);
         }
     }
