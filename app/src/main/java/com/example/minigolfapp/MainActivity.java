@@ -1,12 +1,18 @@
 package com.example.minigolfapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
+//import android.view.View.OnScrollChangeListener;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,13 +24,23 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorecard);
-
+        HorizontalScrollView scores = findViewById(R.id.hscrll2);
+        View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                HorizontalScrollView holes = findViewById(R.id.hscrll1);
+                holes.setScrollX(x);
+            }
+        };
+        scores.setOnScrollChangeListener(scrollChange);
         init();
     }
+
 
     public void init() {
         TableLayout holes = (TableLayout) findViewById(R.id.hole_numbers);
