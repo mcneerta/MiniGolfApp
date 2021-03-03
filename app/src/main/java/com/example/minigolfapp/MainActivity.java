@@ -11,6 +11,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init() {
+        TableLayout holes = (TableLayout) findViewById(R.id.hole_numbers);
         TableLayout stk = (TableLayout) findViewById(R.id.table_main);
+        int numPlayers = 25;
+        int numHoles = 18;
+
         /*TextView tv0 = new TextView(this);
         tv0.setText(" Sl.No ");
         tv0.setTextColor(Color.WHITE);
@@ -43,21 +49,40 @@ public class MainActivity extends AppCompatActivity {
         tv3.setTextColor(Color.WHITE);
         tbrow0.addView(tv3);
         stk.addView(tbrow0);*/
-        int numPlayers = 25;
-        int holes = 4;
+
+        TableRow hrow = new TableRow(this);
+        hrow.setBackgroundColor(Color.WHITE);
+        List<TextView> holeList = new LinkedList<>();
+        for(int i = 0; i < numHoles; i ++) {
+            TextView holeNumber = new TextView(this);
+            holeNumber.setWidth(100);
+            //holeNumber.setHeight(100);
+            holeNumber.setBackgroundColor(Color.WHITE);
+            holeNumber.setGravity(Gravity.CENTER);
+            holeNumber.setText(Integer.toString(i + 1));
+            holeList.add(holeNumber);
+        }
+        for (TextView hole : holeList){
+            hrow.addView(hole);
+        }
+        holes.addView(hrow);
+
         for (int i = 0; i < numPlayers; i++) {
             TableRow tbrow = new TableRow(this);
             tbrow.setGravity(Gravity.LEFT);
-            List<EditText> columns = new LinkedList<EditText>();
-            for (int j = 0; j < holes; j++) {
+            List<EditText> columns = new LinkedList<>();
+
+            for (int j = 0; j < numHoles; j++) {
                 EditText holeScore = new EditText(this);
                 holeScore.setWidth(100);
+                holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
                 columns.add(holeScore);
             }
-            for (EditText hole : columns) {
-                tbrow.addView(hole);
+            for (EditText score : columns) {
+                tbrow.addView(score);
             }
+
             stk.addView(tbrow);
         }
     }
