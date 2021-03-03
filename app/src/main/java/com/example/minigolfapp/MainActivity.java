@@ -43,18 +43,19 @@ public class MainActivity extends AppCompatActivity {
         tv3.setTextColor(Color.WHITE);
         tbrow0.addView(tv3);
         stk.addView(tbrow0);*/
+        int numPlayers = 25;
         int holes = 4;
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < numPlayers; i++) {
             TableRow tbrow = new TableRow(this);
             tbrow.setGravity(Gravity.LEFT);
-            List<EditText> Columns = new LinkedList<EditText>();
+            List<EditText> columns = new LinkedList<EditText>();
             for (int j = 0; j < holes; j++) {
-                EditText row = new EditText(this);
-                row.setWidth(100);
-                row.setInputType(InputType.TYPE_CLASS_NUMBER);
-                Columns.add(row);
+                EditText holeScore = new EditText(this);
+                holeScore.setWidth(100);
+                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+                columns.add(holeScore);
             }
-            for (EditText hole : Columns) {
+            for (EditText hole : columns) {
                 tbrow.addView(hole);
             }
             stk.addView(tbrow);
