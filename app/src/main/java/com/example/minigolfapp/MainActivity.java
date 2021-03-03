@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -30,14 +31,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorecard);
         HorizontalScrollView scores = findViewById(R.id.hscrll2);
+        HorizontalScrollView holes = findViewById(R.id.hscrll1);
+        ScrollView vertical = findViewById(R.id.scrollView1);
+        holes.setHorizontalScrollBarEnabled(false);
+        scores.setHorizontalScrollBarEnabled(false);
+        vertical.setVerticalScrollBarEnabled(false);
         View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                HorizontalScrollView holes = findViewById(R.id.hscrll1);
                 holes.setScrollX(x);
             }
         };
         scores.setOnScrollChangeListener(scrollChange);
+        View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                scores.setScrollX(x);
+            }
+        };
+        holes.setOnScrollChangeListener(scrollChange2);
+        holes.setHorizontalFadingEdgeEnabled(true);
+        scores.setHorizontalFadingEdgeEnabled(true);
         init();
     }
 
