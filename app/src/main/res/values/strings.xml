@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MiniGolfApp</string>
+    <string name="app_title">Welcome to Golf</string>
+    <string name="start_text">Start Game</string>
 </resources>
