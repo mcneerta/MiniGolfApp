@@ -11,7 +11,9 @@ import android.text.InputType;
 import android.view.Gravity;
 //import android.view.View.OnScrollChangeListener;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
@@ -30,90 +32,107 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorecard);
-        HorizontalScrollView scores = findViewById(R.id.hscrll2);
-        HorizontalScrollView holes = findViewById(R.id.hscrll1);
-        ScrollView vertical = findViewById(R.id.scrollView1);
-        holes.setHorizontalScrollBarEnabled(false);
-        scores.setHorizontalScrollBarEnabled(false);
-        vertical.setVerticalScrollBarEnabled(false);
+        HorizontalScrollView scoresH = findViewById(R.id.hscrll2);
+        HorizontalScrollView holesH = findViewById(R.id.hscrll1);
+        ScrollView scoresV = findViewById(R.id.scrollView1);
+        ScrollView namesV = findViewById(R.id.scrollViewNames);
+
+        holesH.setHorizontalScrollBarEnabled(false);
+        scoresH.setHorizontalScrollBarEnabled(false);
+        scoresV.setVerticalScrollBarEnabled(false);
+        namesV.setVerticalScrollBarEnabled(false);
+
         View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                holes.setScrollX(x);
+                holesH.setScrollX(x);
             }
         };
-        scores.setOnScrollChangeListener(scrollChange);
+        scoresH.setOnScrollChangeListener(scrollChange);
+
         View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                scores.setScrollX(x);
+                scoresH.setScrollX(x);
             }
         };
-        holes.setOnScrollChangeListener(scrollChange2);
-        holes.setHorizontalFadingEdgeEnabled(true);
-        scores.setHorizontalFadingEdgeEnabled(true);
+        holesH.setOnScrollChangeListener(scrollChange2);
+
+        View.OnScrollChangeListener scrollChange3 = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                namesV.setScrollY(y);
+            }
+        };
+        scoresV.setOnScrollChangeListener(scrollChange3);
+
+        View.OnScrollChangeListener scrollChange4 = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                scoresV.setScrollY(y);
+            }
+        };
+        namesV.setOnScrollChangeListener(scrollChange4);
+
+        holesH.setHorizontalFadingEdgeEnabled(true);
+        scoresH.setHorizontalFadingEdgeEnabled(true);
+        scoresV.setVerticalFadingEdgeEnabled(true);
+        namesV.setVerticalFadingEdgeEnabled(true);
+
         init();
     }
 
 
     public void init() {
-        TableLayout holes = (TableLayout) findViewById(R.id.hole_numbers);
-        TableLayout stk = (TableLayout) findViewById(R.id.table_main);
-        int numPlayers = 25;
+        TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);
+        TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
+        TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
+
+        int numPlayers = 10;
         int numHoles = 18;
 
-        /*TextView tv0 = new TextView(this);
-        tv0.setText(" Sl.No ");
-        tv0.setTextColor(Color.WHITE);
-        tbrow0.addView(tv0);
-        TextView tv1 = new TextView(this);
-        tv1.setText(" Product ");
-        tv1.setTextColor(Color.WHITE);
-        tbrow0.addView(tv1);
-        TextView tv2 = new TextView(this);
-        tv2.setText(" Unit Price ");
-        tv2.setTextColor(Color.WHITE);
-        tbrow0.addView(tv2);
-        TextView tv3 = new TextView(this);
-        tv3.setText(" Stock Remaining ");
-        tv3.setTextColor(Color.WHITE);
-        tbrow0.addView(tv3);
-        stk.addView(tbrow0);*/
-
-        TableRow hrow = new TableRow(this);
-        hrow.setBackgroundColor(Color.WHITE);
+        TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
-        for(int i = 0; i < numHoles; i ++) {
+        for(int i = 0; i < numHoles; i++) {
             TextView holeNumber = new TextView(this);
             holeNumber.setWidth(100);
-            //holeNumber.setHeight(100);
-            holeNumber.setBackgroundColor(Color.WHITE);
             holeNumber.setGravity(Gravity.CENTER);
             holeNumber.setText(Integer.toString(i + 1));
             holeList.add(holeNumber);
         }
         for (TextView hole : holeList){
-            hrow.addView(hole);
+            hRow.addView(hole);
         }
-        holes.addView(hrow);
+        tableHoles.addView(hRow);
 
         for (int i = 0; i < numPlayers; i++) {
-            TableRow tbrow = new TableRow(this);
-            tbrow.setGravity(Gravity.LEFT);
-            List<EditText> columns = new LinkedList<>();
+            TableRow nRow = new TableRow(this);
+            TextView name = new TextView(this);
+            name.setHeight(124);
+            name.setGravity(Gravity.CENTER);
 
+            String playerName = "Player " + Integer.toString(i + 1);
+            name.setText(playerName);
+
+            nRow.addView(name);
+            tableName.addView(nRow);
+
+            TableRow sRow = new TableRow(this);
+            sRow.setGravity(Gravity.LEFT);
+            List<EditText> columns = new LinkedList<>();
             for (int j = 0; j < numHoles; j++) {
                 EditText holeScore = new EditText(this);
                 holeScore.setWidth(100);
+
                 holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
                 columns.add(holeScore);
             }
             for (EditText score : columns) {
-                tbrow.addView(score);
+                sRow.addView(score);
             }
 
-            stk.addView(tbrow);
+            tableScore.addView(sRow);
         }
     }
 }
