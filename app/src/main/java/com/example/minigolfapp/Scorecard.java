@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -134,5 +135,9 @@ public class Scorecard extends AppCompatActivity {
 
             tableScore.addView(sRow);
         }
+    }
+
+    public void backClick(View v){
+        startActivity(new Intent(Scorecard.this, MainActivity.class));
     }
 }
