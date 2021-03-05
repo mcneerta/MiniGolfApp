@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 //import android.view.View.OnScrollChangeListener;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -76,8 +79,8 @@ public class Scorecard extends AppCompatActivity {
         };
         namesV.setOnScrollChangeListener(scrollChange4);
 
-//        holesH.setHorizontalFadingEdgeEnabled(true);
-//        scoresH.setHorizontalFadingEdgeEnabled(true);
+        holesH.setHorizontalFadingEdgeEnabled(true);
+        scoresH.setHorizontalFadingEdgeEnabled(true);
 //        scoresV.setVerticalFadingEdgeEnabled(true);
 //        namesV.setVerticalFadingEdgeEnabled(true);
 
@@ -90,6 +93,9 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
+
+        List<EditText> scoreList = new ArrayList<>();
+        List<TextView> totalList = new ArrayList<>();
 
         int numPlayers = 2;
         int numHoles = 18;
@@ -125,9 +131,9 @@ public class Scorecard extends AppCompatActivity {
             TextView total = new TextView(this);
             total.setHeight(124);
             total.setGravity(Gravity.CENTER);
-//            total.setGravity(Gravity.CENTER_HORIZONTAL);
-            String totalScore = Integer.toString(i + 1);
-            total.setText(totalScore);
+            //String totalScore = 0;
+            total.setText("0");
+            totalList.add(total);
             tRow.addView(total);
             tableTotals.addView(tRow);
 
@@ -140,13 +146,48 @@ public class Scorecard extends AppCompatActivity {
 
                 holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                holeScore.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        setTotals(numPlayers, numHoles, scoreList, totalList);
+                    }
+                });
+
                 columns.add(holeScore);
+                scoreList.add(holeScore);
             }
             for (EditText score : columns) {
                 sRow.addView(score);
             }
 
             tableScore.addView(sRow);
+        }
+    }
+
+    public void setTotals(int numPlayers, int numHoles, List<EditText> scoreList, List<TextView> totalList){
+        int x = 0;
+        int j = 0;
+        for(int i = 0; i < numPlayers; i++){
+            int total = 0;
+            for(j = x; j < numHoles + x; j++){
+                String currentScore = scoreList.get(j).getText().toString();
+                if (!currentScore.isEmpty()) {
+                    total += Integer.parseInt(currentScore);
+                }
+            }
+            x = j;
+            totalList.get(i).setText(Integer.toString(total));
         }
     }
 
