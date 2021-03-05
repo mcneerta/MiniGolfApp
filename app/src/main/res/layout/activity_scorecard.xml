@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true"
-    tools:context=".Scorecard">
+    tools:context=".Scorecard"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/backButton"
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Back"
+        android:background="@color/sky_blue"
         android:onClick="backClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Settings"
+        android:background="@color/sky_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +156,7 @@
         android:layout_marginBottom="48dp"
         android:onClick="finishClick"
         android:text="Finish Game"
+        android:background="@color/sky_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
