@@ -76,10 +76,10 @@ public class Scorecard extends AppCompatActivity {
         };
         namesV.setOnScrollChangeListener(scrollChange4);
 
-        holesH.setHorizontalFadingEdgeEnabled(true);
-        scoresH.setHorizontalFadingEdgeEnabled(true);
-        scoresV.setVerticalFadingEdgeEnabled(true);
-        namesV.setVerticalFadingEdgeEnabled(true);
+//        holesH.setHorizontalFadingEdgeEnabled(true);
+//        scoresH.setHorizontalFadingEdgeEnabled(true);
+//        scoresV.setVerticalFadingEdgeEnabled(true);
+//        namesV.setVerticalFadingEdgeEnabled(true);
 
         init();
     }
@@ -89,8 +89,9 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);
         TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
+        TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
-        int numPlayers = 10;
+        int numPlayers = 2;
         int numHoles = 18;
 
         TableRow hRow = new TableRow(this);
@@ -119,6 +120,17 @@ public class Scorecard extends AppCompatActivity {
             nRow.addView(name);
             tableName.addView(nRow);
 
+            // Total Score Column
+            TableRow tRow = new TableRow(this);
+            TextView total = new TextView(this);
+            total.setHeight(124);
+            total.setGravity(Gravity.CENTER);
+//            total.setGravity(Gravity.CENTER_HORIZONTAL);
+            String totalScore = Integer.toString(i + 1);
+            total.setText(totalScore);
+            tRow.addView(total);
+            tableTotals.addView(tRow);
+
             TableRow sRow = new TableRow(this);
             sRow.setGravity(Gravity.LEFT);
             List<EditText> columns = new LinkedList<>();
@@ -140,5 +152,9 @@ public class Scorecard extends AppCompatActivity {
 
     public void backClick(View v){
         startActivity(new Intent(Scorecard.this, MainActivity.class));
+    }
+
+    public void finishClick(View v){
+        startActivity(new Intent(Scorecard.this, Scorecard.class));
     }
 }
