@@ -1,36 +1,41 @@
 package com.example.minigolfapp;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
-//import android.view.View.OnScrollChangeListener;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+//import android.view.View.OnScrollChangeListener;
+
 //Testing new github last try
 public class Scorecard extends AppCompatActivity {
+
+    List<TextView> totalList = new ArrayList<>();
+    List<EditText> scoreList = new ArrayList<>();
+    List<TextView> nameList = new ArrayList<>();
+
+    int numPlayers = 2;
+    int numHoles = 18;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -94,11 +99,10 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
-        List<EditText> scoreList = new ArrayList<>();
-        List<TextView> totalList = new ArrayList<>();
 
-        int numPlayers = 2;
-        int numHoles = 18;
+
+
+
 
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
@@ -122,6 +126,7 @@ public class Scorecard extends AppCompatActivity {
 
             String playerName = "Player " + Integer.toString(i + 1);
             name.setText(playerName);
+            nameList.add(name);
 
             nRow.addView(name);
             tableName.addView(nRow);
@@ -160,7 +165,7 @@ public class Scorecard extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        setTotals(numPlayers, numHoles, scoreList, totalList);
+                        setTotals();
                     }
                 });
 
@@ -175,7 +180,7 @@ public class Scorecard extends AppCompatActivity {
         }
     }
 
-    public void setTotals(int numPlayers, int numHoles, List<EditText> scoreList, List<TextView> totalList){
+    public void setTotals(){
         int x = 0;
         int j = 0;
         for(int i = 0; i < numPlayers; i++){
@@ -191,11 +196,71 @@ public class Scorecard extends AppCompatActivity {
         }
     }
 
+    public void showFinishGameAlertDialogButtonClicked(View view) {
+
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Finish Game?");
+        // add the buttons
+        builder.setPositiveButton("No", null);
+        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // do something like...
+                finishGameClick(view);
+
+            }
+        });
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public List<Integer> getTotalIntList() {
+        List<Integer> totalIntList = new ArrayList<>();
+        for (int i = 0; i < totalList.size(); i++) {
+            totalIntList.add(
+                    Integer.parseInt(totalList.get(i).getText().toString()));
+        }
+        return totalIntList;
+    }
+
+    public void showWinnerAlertDialogButtonClicked(View view) {
+
+        List<Integer> totalIntList = new ArrayList<>();
+        totalIntList = getTotalIntList();
+
+        int winnerValue = Collections.min(totalIntList);
+        int winnerIndex = totalIntList.indexOf(winnerValue);
+        String winnerName = nameList.get(winnerIndex).getText().toString();
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("The winner is " + winnerName + "!");
+        // add the buttons
+        builder.setPositiveButton("Return to Menu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                backClick(view);
+            }
+        });
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     public void backClick(View v){
         startActivity(new Intent(Scorecard.this, MainActivity.class));
     }
 
-    public void finishClick(View v){
-        startActivity(new Intent(Scorecard.this, Scorecard.class));
+    public void finishGameClick(View v){
+        showWinnerAlertDialogButtonClicked(v);
+    }
+
+    public void finishClick(View v) {
+        showFinishGameAlertDialogButtonClicked(v);
     }
 }
