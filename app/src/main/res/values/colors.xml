@@ -7,5 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="sky_blue">#9ce1ff</color>
+    <color name="light_light_blue">#9ce1ff</color>
+    <color name="light_blue">#73d4ff</color>
+    <color name="sky_blue_light">#B3CFDD</color>
+    <color name="sky_blue">#449DBE</color>
+    <color name="golf_course_green">#4FA467</color>
+    <color name="golf_course_green_dark">#2A6927</color>
+    <color name="golf_course_green_yellow">#80A62C</color>
 </resources>

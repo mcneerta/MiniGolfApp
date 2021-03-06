@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Back"
-        android:background="@color/sky_blue"
+        android:background="@color/golf_course_green"
         android:onClick="backClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
@@ -27,12 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Settings"
-        android:background="@color/sky_blue"
+        android:background="@color/golf_course_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -41,28 +40,49 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.575">
 
-        <ScrollView
-            android:id="@+id/scrollViewNames"
-            android:layout_width="75dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="90dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <GridLayout
+            android:id="@+id/GridLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="104dp"
+            android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/table_names"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/holes_text"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Holes"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            </TableLayout>
+            <ScrollView
+                android:id="@+id/scrollViewNames"
+                android:layout_width="75dp"
+                android:layout_height="135dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </ScrollView>
+                <TableLayout
+                    android:id="@+id/table_names"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TableLayout>
+
+            </ScrollView>
+
+        </GridLayout>
 
         <GridLayout
             android:id="@+id/GridLayout1"
@@ -84,7 +104,6 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:background="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -93,8 +112,7 @@
                 <TableLayout
                     android:id="@+id/hole_numbers"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff">
+                    android:layout_height="wrap_content">
 
                 </TableLayout>
 
@@ -119,7 +137,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:background="#ffffff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -135,18 +152,43 @@
 
         </GridLayout>
 
-        <ScrollView
-            android:layout_width="75dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="90dp">
+        <GridLayout
+            android:id="@+id/GridLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="104dp"
+            android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/table_totals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"/>
-        </ScrollView>
+            <TextView
+                android:id="@+id/total_text"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginEnd="39dp"
+                android:layout_marginRight="39dp"
+                android:gravity="center"
+                android:text="Totals"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ScrollView
+                android:layout_width="75dp"
+                android:layout_height="135dp"
+                android:layout_marginTop="0dp">
+
+                <TableLayout
+                    android:id="@+id/table_totals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp" />
+
+            </ScrollView>
+
+        </GridLayout>
+
     </LinearLayout>
 
     <Button
@@ -156,7 +198,7 @@
         android:layout_marginBottom="48dp"
         android:onClick="finishClick"
         android:text="Finish Game"
-        android:background="@color/sky_blue"
+        android:background="@color/golf_course_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

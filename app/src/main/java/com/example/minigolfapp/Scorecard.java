@@ -99,16 +99,12 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
-
-
-
-
-
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
         for(int i = 0; i < numHoles; i++) {
             TextView holeNumber = new TextView(this);
             holeNumber.setWidth(100);
+            holeNumber.setTextSize(18);
             holeNumber.setGravity(Gravity.CENTER);
             holeNumber.setText(Integer.toString(i + 1));
             holeList.add(holeNumber);
@@ -126,6 +122,7 @@ public class Scorecard extends AppCompatActivity {
 
             String playerName = "Player " + Integer.toString(i + 1);
             name.setText(playerName);
+            name.setTextSize(18);
             nameList.add(name);
 
             nRow.addView(name);
@@ -138,6 +135,7 @@ public class Scorecard extends AppCompatActivity {
             total.setGravity(Gravity.CENTER);
             //String totalScore = 0;
             total.setText("0");
+            total.setTextSize(18);
             totalList.add(total);
             tRow.addView(total);
             tableTotals.addView(tRow);
