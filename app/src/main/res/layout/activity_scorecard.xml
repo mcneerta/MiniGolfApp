@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true"
-    tools:context=".Scorecard"
-    android:background="@color/white">
+    tools:context=".Scorecard">
 
     <Button
         android:id="@+id/backButton"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Back"
-        android:background="@color/golf_course_green"
+        android:backgroundTint="@color/golf_course_green_yellow"
         android:onClick="backClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
@@ -27,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Settings"
-        android:background="@color/golf_course_green"
+        android:backgroundTint="@color/golf_course_green_yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +197,7 @@
         android:layout_marginBottom="48dp"
         android:onClick="finishClick"
         android:text="Finish Game"
-        android:background="@color/golf_course_green_dark"
+        android:backgroundTint="@color/golf_course_green_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
