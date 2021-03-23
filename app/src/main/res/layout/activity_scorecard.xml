@@ -38,18 +38,17 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_height="450dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575">
+        app:layout_constraintTop_toTopOf="parent">
 
         <GridLayout
             android:id="@+id/GridLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -67,10 +66,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ScrollView
-                android:id="@+id/scrollViewNames"
+                android:id="@+id/ScrollViewNames"
                 android:layout_width="75dp"
-                android:layout_height="135dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="310dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -78,7 +77,8 @@
                 <TableLayout
                     android:id="@+id/table_names"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
                 </TableLayout>
 
@@ -89,14 +89,14 @@
         <GridLayout
             android:id="@+id/GridLayout1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
 
 
             <HorizontalScrollView
-                android:id="@+id/hscrll1"
+                android:id="@+id/ScrollViewHoles"
                 android:layout_width="175dp"
                 android:layout_height="30dp"
                 android:layout_row="0"
@@ -121,9 +121,9 @@
             </HorizontalScrollView>
 
             <ScrollView
-                android:id="@+id/scrollView1"
+                android:id="@+id/ScrollViewScoresV"
                 android:layout_width="wrap_content"
-                android:layout_height="135dp"
+                android:layout_height="310dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +131,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <HorizontalScrollView
-                    android:id="@+id/hscrll2"
+                    android:id="@+id/ScrollViewScoresH"
                     android:layout_width="175dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
@@ -157,7 +157,7 @@
         <GridLayout
             android:id="@+id/GridLayout3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -176,8 +176,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ScrollView
+                android:id="@+id/ScrollViewTotals"
                 android:layout_width="75dp"
-                android:layout_height="135dp"
+                android:layout_height="300dp"
                 android:layout_marginTop="0dp">
 
                 <TableLayout
@@ -203,7 +204,8 @@
         android:backgroundTint="@color/golf_course_green_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
         <activity android:name=".Results"></activity>
+        <activity android:name=".Scorecard" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Scorecard" />
     </application>
 
 </manifest>

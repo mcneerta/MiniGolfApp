@@ -35,31 +35,25 @@ public class Scorecard extends AppCompatActivity {
     List<TextView> nameList = new ArrayList<>();
     public static String winnerName;
 
-    int numPlayers = 2;
-    int numHoles = 18;
+    int numPlayers = 5;
+    int numHoles = 6;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorecard);
-        HorizontalScrollView scoresH = findViewById(R.id.hscrll2);
-        HorizontalScrollView holesH = findViewById(R.id.hscrll1);
-        ScrollView scoresV = findViewById(R.id.scrollView1);
-        ScrollView namesV = findViewById(R.id.scrollViewNames);
+        HorizontalScrollView scoresH = findViewById(R.id.ScrollViewScoresH);
+        HorizontalScrollView holesH = findViewById(R.id.ScrollViewHoles);
+        ScrollView scoresV = findViewById(R.id.ScrollViewScoresV);
+        ScrollView namesV = findViewById(R.id.ScrollViewNames);
+        ScrollView totalsV = findViewById(R.id.ScrollViewTotals);
 
         holesH.setHorizontalScrollBarEnabled(false);
         scoresH.setHorizontalScrollBarEnabled(false);
         scoresV.setVerticalScrollBarEnabled(false);
         namesV.setVerticalScrollBarEnabled(false);
-
-        View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                holesH.setScrollX(x);
-            }
-        };
-        scoresH.setOnScrollChangeListener(scrollChange);
+        totalsV.setVerticalScrollBarEnabled(false);
 
         View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
             @Override
@@ -69,10 +63,19 @@ public class Scorecard extends AppCompatActivity {
         };
         holesH.setOnScrollChangeListener(scrollChange2);
 
+        View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                holesH.setScrollX(x);
+            }
+        };
+        scoresH.setOnScrollChangeListener(scrollChange);
+
         View.OnScrollChangeListener scrollChange3 = new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
                 namesV.setScrollY(y);
+                totalsV.setScrollY(y);
             }
         };
         scoresV.setOnScrollChangeListener(scrollChange3);
@@ -81,9 +84,19 @@ public class Scorecard extends AppCompatActivity {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
                 scoresV.setScrollY(y);
+                totalsV.setScrollY(y);
             }
         };
         namesV.setOnScrollChangeListener(scrollChange4);
+
+        View.OnScrollChangeListener scrollChange7 = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                scoresV.setScrollY(y);
+                namesV.setScrollY(y);
+            }
+        };
+        totalsV.setOnScrollChangeListener(scrollChange4);
 
         holesH.setHorizontalFadingEdgeEnabled(true);
         scoresH.setHorizontalFadingEdgeEnabled(true);
@@ -104,7 +117,7 @@ public class Scorecard extends AppCompatActivity {
         List<TextView> holeList = new LinkedList<>();
         for(int i = 0; i < numHoles; i++) {
             TextView holeNumber = new TextView(this);
-            holeNumber.setWidth(100);
+            holeNumber.setWidth(140);
             holeNumber.setTextSize(18);
             holeNumber.setGravity(Gravity.CENTER);
             holeNumber.setText(Integer.toString(i + 1));
@@ -118,7 +131,7 @@ public class Scorecard extends AppCompatActivity {
         for (int i = 0; i < numPlayers; i++) {
             TableRow nRow = new TableRow(this);
             TextView name = new TextView(this);
-            name.setHeight(124);
+            name.setHeight(136);
             name.setGravity(Gravity.CENTER);
 
             String playerName = "Player " + Integer.toString(i + 1);
@@ -132,7 +145,7 @@ public class Scorecard extends AppCompatActivity {
             // Total Score Column
             TableRow tRow = new TableRow(this);
             TextView total = new TextView(this);
-            total.setHeight(124);
+            total.setHeight(136);
             total.setGravity(Gravity.CENTER);
             //String totalScore = 0;
             total.setText("0");
@@ -146,7 +159,7 @@ public class Scorecard extends AppCompatActivity {
             List<EditText> columns = new LinkedList<>();
             for (int j = 0; j < numHoles; j++) {
                 EditText holeScore = new EditText(this);
-                holeScore.setWidth(100);
+                holeScore.setWidth(140);
 
                 holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
