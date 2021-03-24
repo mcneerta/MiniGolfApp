@@ -34,13 +34,14 @@ public class Scorecard extends AppCompatActivity {
     List<TextView> nameList = new ArrayList<>();
     public static String winnerName;
 
-    int numPlayers = 5;
+    int numPlayers;
     int numHoles = 6;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        numPlayers = MainActivity.numPlayers;
         setContentView(R.layout.activity_scorecard);
         HorizontalScrollView scoresH = findViewById(R.id.ScrollViewScoresH);
         HorizontalScrollView holesH = findViewById(R.id.ScrollViewHoles);
