@@ -27,7 +27,6 @@ import java.util.List;
 
 //import android.view.View.OnScrollChangeListener;
 
-//Testing new github last try
 public class Scorecard extends AppCompatActivity {
 
     List<TextView> totalList = new ArrayList<>();
