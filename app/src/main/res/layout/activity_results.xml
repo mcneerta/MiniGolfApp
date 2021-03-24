@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textStyle="bold"
         android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <Button
         android:id="@+id/ReturnButton"
@@ -32,14 +32,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TableRow
-        android:layout_width="348dp"
-        android:layout_height="434dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="315dp"
+        android:layout_height="396dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintVertical_bias="0.546">
+
+        <GridLayout
+            android:id="@+id/GridLayout1"
+            android:layout_width="158dp"
+            android:layout_height="391dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="104dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/playerNamesList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:gravity="center_horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.595" />
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/GridLayout2"
+            android:layout_width="155dp"
+            android:layout_height="393dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="104dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/playerScoresList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.595" />
+        </GridLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
