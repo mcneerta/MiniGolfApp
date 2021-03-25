@@ -4,35 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:isScrollContainer="true"
     tools:context=".Scorecard">
 
-<!--    <Button-->
-<!--        android:id="@+id/backButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Back"-->
-<!--        android:backgroundTint="@color/golf_course_green_yellow"-->
-<!--        android:onClick="backClick"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.049"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/backButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:text="Back"-->
+    <!--        android:backgroundTint="@color/golf_course_green_yellow"-->
+    <!--        android:onClick="backClick"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.049"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/golf_course_green_yellow"
         android:src="@mipmap/ic_launcher_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/golf_course_green_yellow"/>
-<!--        android:text="Settings"-->
-<!--        android:backgroundTint="@color/golf_course_green_yellow"-->
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--        android:text="Settings"-->
+    <!--        android:backgroundTint="@color/golf_course_green_yellow"-->
 
 
     <LinearLayout
@@ -199,13 +200,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/golf_course_green_yellow"
         android:onClick="finishClick"
         android:text="Finish Game"
-        android:backgroundTint="@color/golf_course_green_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.minigolfapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -34,7 +35,7 @@ public class Scorecard extends AppCompatActivity {
     public static List<TextView> nameList = new ArrayList<>();
     public static String winnerName;
 
-    int numPlayers = 5;
+    int numPlayers = 20;
     int numHoles = 6;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -112,11 +113,15 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
+        float density = this.getResources().getDisplayMetrics().density;
+        int pixelsV = (int) (density * 45.334);
+        int pixelsH = (int) (density * 46.667);
+
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
         for(int i = 0; i < numHoles; i++) {
             TextView holeNumber = new TextView(this);
-            holeNumber.setWidth(140);
+            holeNumber.setWidth(pixelsH);
             holeNumber.setTextSize(18);
             holeNumber.setGravity(Gravity.CENTER);
             holeNumber.setText(Integer.toString(i + 1));
@@ -130,10 +135,11 @@ public class Scorecard extends AppCompatActivity {
         for (int i = 0; i < numPlayers; i++) {
             TableRow nRow = new TableRow(this);
             TextView name = new TextView(this);
-            name.setHeight(136);
+            name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
 
             String playerName = "Player " + Integer.toString(i + 1);
+
             name.setText(playerName);
             name.setTextSize(18);
             nameList.add(name);
@@ -144,7 +150,7 @@ public class Scorecard extends AppCompatActivity {
             // Total Score Column
             TableRow tRow = new TableRow(this);
             TextView total = new TextView(this);
-            total.setHeight(136);
+            total.setHeight(pixelsV);
             total.setGravity(Gravity.CENTER);
             //String totalScore = 0;
             total.setText("0");
@@ -158,7 +164,8 @@ public class Scorecard extends AppCompatActivity {
             List<EditText> columns = new LinkedList<>();
             for (int j = 0; j < numHoles; j++) {
                 EditText holeScore = new EditText(this);
-                holeScore.setWidth(140);
+                holeScore.setWidth(pixelsH);
+                holeScore.setBackgroundResource(R.drawable.grid_border);
 
                 holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
