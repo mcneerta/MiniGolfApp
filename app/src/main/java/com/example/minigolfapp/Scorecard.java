@@ -35,7 +35,7 @@ public class Scorecard extends AppCompatActivity {
     public static List<TextView> nameList = new ArrayList<>();
     public static String winnerName;
 
-    int numPlayers = 20;
+    int numPlayers = 4;
     int numHoles = 6;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -138,7 +138,7 @@ public class Scorecard extends AppCompatActivity {
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
 
-            String playerName = "Player " + Integer.toString(i + 1);
+            String playerName = Name.nameStrings.get(i);//"Player " + Integer.toString(i + 1);
 
             name.setText(playerName);
             name.setTextSize(18);
