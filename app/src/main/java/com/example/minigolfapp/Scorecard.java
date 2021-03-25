@@ -135,10 +135,16 @@ public class Scorecard extends AppCompatActivity {
         for (int i = 0; i < numPlayers; i++) {
             TableRow nRow = new TableRow(this);
             TextView name = new TextView(this);
+            String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
 
-            String playerName = Name.nameStrings.get(i);//"Player " + Integer.toString(i + 1);
+            if(!Name.nameStrings.get(i).isEmpty()) {
+                 playerName = Name.nameStrings.get(i);
+            }
+            else{
+                 playerName = "Player " + Integer.toString(i + 1);
+            }
 
             name.setText(playerName);
             name.setTextSize(18);

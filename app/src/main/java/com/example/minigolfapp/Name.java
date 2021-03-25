@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ public class Name extends AppCompatActivity {
 
     public static List<EditText> nameEdits = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
-    int playerNum = 4;
+    int playerNum = 14;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -64,7 +65,8 @@ public class Name extends AppCompatActivity {
             nameEdit.setWidth(pixelsH * 3);
             nameEdit.setTextSize(18);
             nameEdit.setGravity(Gravity.CENTER);
-            nameEdit.setText("Player " + Integer.toString(i + 1));
+            nameEdit.setHint("Player " + Integer.toString(i + 1));
+            nameEdit.setInputType(InputType.TYPE_CLASS_TEXT);
             nameEdits.add(nameEdit);
             namesRow.addView(nameEdit);
 
