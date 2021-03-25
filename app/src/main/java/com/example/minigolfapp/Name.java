@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,9 @@ import java.util.List;
 
 public class Name extends AppCompatActivity {
 
+    public static List<EditText> nameEdits = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
+    int playerNum = 40;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -34,5 +40,25 @@ public class Name extends AppCompatActivity {
         namesInput.setOnScrollChangeListener(scrollChange);
 
         namesInput.setVerticalFadingEdgeEnabled(true);
+        init();
+    }
+
+    public void init(){
+        TableLayout namesTable = (TableLayout) findViewById(R.id.namesTable);
+        float density = this.getResources().getDisplayMetrics().density;
+        int pixelsH = (int) (density * 46.667);
+
+        for(int i = 0; i < playerNum; i++){
+            TableRow namesRow = new TableRow(this);
+            EditText nameEdit = new EditText(this);
+            nameEdit.setWidth(pixelsH * 3);
+            nameEdit.setTextSize(18);
+            nameEdit.setGravity(Gravity.CENTER);
+            nameEdit.setText("Player " + Integer.toString(i + 1));
+            nameEdits.add(nameEdit);
+            namesRow.addView(nameEdit);
+            namesTable.addView(namesRow);
+        }
+
     }
 }

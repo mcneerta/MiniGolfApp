@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startClick(View v){
-        startActivity(new Intent(MainActivity.this, Scorecard.class));
+        startActivity(new Intent(MainActivity.this, Name.class));
     }
 }
