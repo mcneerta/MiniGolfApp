@@ -47,6 +47,7 @@ public class Name extends AppCompatActivity {
     }
 
     public void init(){
+        nameEdits.clear();
         TableLayout namesTable = (TableLayout) findViewById(R.id.namesTable);
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsH = (int) (density * 46.667);
@@ -76,8 +77,14 @@ public class Name extends AppCompatActivity {
     }
 
     public void startClick(View v){
-        for (EditText names : nameEdits){
-            nameStrings.add(names.getText().toString());
+        nameStrings.clear();
+        for (int i = 0; i < nameEdits.size(); i++){
+            if (!nameEdits.get(i).getText().toString().isEmpty()) {
+                nameStrings.add(nameEdits.get(i).getText().toString());
+            }
+            else{
+                nameStrings.add("Player " + Integer.toString(i + 1));
+            }
         }
         startActivity(new Intent(Name.this, Scorecard.class));
     }
