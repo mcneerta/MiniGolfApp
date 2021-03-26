@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Name">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="?attr/background"
+        android:scaleType="centerCrop"/>
+
     <ScrollView
         android:id="@+id/ScrollViewNamesInput"
         android:layout_width="wrap_content"

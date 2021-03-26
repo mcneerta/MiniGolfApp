@@ -76,6 +76,7 @@ public class Name extends AppCompatActivity {
     }
 
     public void startClick(View v){
+        nameStrings.clear();
         for (EditText names : nameEdits){
             nameStrings.add(names.getText().toString());
         }

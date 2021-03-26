@@ -35,7 +35,7 @@ public class Scorecard extends AppCompatActivity {
     public static List<TextView> nameList = new ArrayList<>();
     public static String winnerName;
 
-    int numPlayers = 4;
+    int numPlayers = Name.nameStrings.size();
     int numHoles = 6;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -100,8 +100,9 @@ public class Scorecard extends AppCompatActivity {
 
         holesH.setHorizontalFadingEdgeEnabled(true);
         scoresH.setHorizontalFadingEdgeEnabled(true);
-//        scoresV.setVerticalFadingEdgeEnabled(true);
-//        namesV.setVerticalFadingEdgeEnabled(true);
+        scoresV.setVerticalFadingEdgeEnabled(true);
+        namesV.setVerticalFadingEdgeEnabled(true);
+        totalsV.setVerticalFadingEdgeEnabled(true);
 
         init();
     }
