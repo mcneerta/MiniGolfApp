@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.244" />
 
     <Button
         android:id="@+id/ReturnButton"
@@ -44,8 +44,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="315dp"
-        android:layout_height="396dp"
+        android:layout_width="322dp"
+        android:layout_height="377dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +54,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546">
 
-        <GridLayout
+        <LinearLayout
             android:id="@+id/GridLayout1"
             android:layout_width="158dp"
-            android:layout_height="391dp"
+            android:layout_height="372dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -74,12 +75,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.595" />
-        </GridLayout>
+        </LinearLayout>
 
-        <GridLayout
+        <LinearLayout
             android:id="@+id/GridLayout2"
             android:layout_width="155dp"
-            android:layout_height="393dp"
+            android:layout_height="377dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -96,7 +97,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.595" />
-        </GridLayout>
+        </LinearLayout>
     </LinearLayout>
 
 
