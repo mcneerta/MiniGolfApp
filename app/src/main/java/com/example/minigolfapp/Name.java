@@ -23,7 +23,8 @@ public class Name extends AppCompatActivity {
 
     public static List<EditText> nameEdits = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
-    int playerNum = 14;
+    int playerNum = MainActivity.numPlayers;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -32,6 +33,7 @@ public class Name extends AppCompatActivity {
         setContentView(R.layout.activity_name);
         ScrollView namesInput = findViewById(R.id.ScrollViewNamesInput);
 
+        MainActivity.playersNamed = true;
         namesInput.setVerticalScrollBarEnabled(false);
 
         View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {

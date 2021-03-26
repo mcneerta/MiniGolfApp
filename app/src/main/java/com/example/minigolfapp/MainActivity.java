@@ -16,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean playersNamed = false;
     public static int numPlayers;
 
     @Override
