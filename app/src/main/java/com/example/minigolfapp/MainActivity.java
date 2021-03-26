@@ -17,7 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean playersNamed = false;
-    public static int numPlayers;
+    public static int numPlayers = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Enter", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                numPlayers = Integer.parseInt(players.getText().toString());
+                if(players.getText().length() > 0) {
+                    numPlayers = Integer.parseInt(players.getText().toString());
+                }
                 showNamePlayersDialog(v);
             }
         });
