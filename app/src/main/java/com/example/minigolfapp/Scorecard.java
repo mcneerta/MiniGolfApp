@@ -139,13 +139,8 @@ public class Scorecard extends AppCompatActivity {
             String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
+            playerName = Name.nameStrings.get(i);
 
-            if(!Name.nameStrings.get(i).isEmpty()) {
-                 playerName = Name.nameStrings.get(i);
-            }
-            else{
-                 playerName = "Player " + Integer.toString(i + 1);
-            }
 
             name.setText(playerName);
             name.setTextSize(18);
@@ -236,7 +231,7 @@ public class Scorecard extends AppCompatActivity {
 
                 int winnerValue = Collections.min(totalIntList);
                 int winnerIndex = totalIntList.indexOf(winnerValue);
-                winnerName = nameList.get(winnerIndex).getText().toString();
+                winnerName = Name.nameStrings.get(winnerIndex);
                 // do something like...
                 finishGameClick(view);
 
