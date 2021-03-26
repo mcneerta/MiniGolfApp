@@ -145,10 +145,9 @@ public class Scorecard extends AppCompatActivity {
             } else {
                 playerName = "Player " + (i+1);
             }
-
-
             name.setText(playerName);
             name.setTextSize(18);
+            name.setWidth((int) (density * 75));
             nameList.add(name);
 
             nRow.addView(name);
