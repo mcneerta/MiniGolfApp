@@ -4,35 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:isScrollContainer="true"
     tools:context=".Scorecard">
 
-<!--    <Button-->
-<!--        android:id="@+id/backButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Back"-->
-<!--        android:backgroundTint="@color/golf_course_green_yellow"-->
-<!--        android:onClick="backClick"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.049"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="?attr/background"
+        android:scaleType="centerCrop"/>
+
+    <!--    <Button-->
+    <!--        android:id="@+id/backButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:text="Back"-->
+    <!--        android:backgroundTint="@color/golf_course_green_yellow"-->
+    <!--        android:onClick="backClick"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.049"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/golf_course_green_yellow"
         android:src="@mipmap/ic_launcher_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/golf_course_green_yellow"/>
-<!--        android:text="Settings"-->
-<!--        android:backgroundTint="@color/golf_course_green_yellow"-->
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--        android:text="Settings"-->
+    <!--        android:backgroundTint="@color/golf_course_green_yellow"-->
 
 
     <LinearLayout
@@ -43,7 +54,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55">
 
         <GridLayout
             android:id="@+id/GridLayout2"
@@ -68,7 +80,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewNames"
                 android:layout_width="75dp"
-                android:layout_height="310dp"
+                android:layout_height="335dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +109,7 @@
 
             <HorizontalScrollView
                 android:id="@+id/ScrollViewHoles"
-                android:layout_width="175dp"
+                android:layout_width="182dp"
                 android:layout_height="30dp"
                 android:layout_row="0"
                 android:layout_column="1"
@@ -123,7 +135,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewScoresV"
                 android:layout_width="wrap_content"
-                android:layout_height="310dp"
+                android:layout_height="335dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +144,7 @@
 
                 <HorizontalScrollView
                     android:id="@+id/ScrollViewScoresH"
-                    android:layout_width="175dp"
+                    android:layout_width="182dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
@@ -178,7 +190,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewTotals"
                 android:layout_width="75dp"
-                android:layout_height="300dp"
+                android:layout_height="325dp"
                 android:layout_marginTop="0dp">
 
                 <TableLayout
@@ -199,13 +211,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/golf_course_green_yellow"
         android:onClick="finishClick"
         android:text="Finish Game"
-        android:backgroundTint="@color/golf_course_green_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
