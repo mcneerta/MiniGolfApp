@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.InputType;
 import android.view.View;
 import android.widget.*;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("How many Players?");
+        builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
         EditText players = new EditText(MainActivity.this);
         players.setInputType(InputType.TYPE_CLASS_NUMBER);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showNamePlayersDialog(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Name the players?");
+        builder.setTitle(Html.fromHtml("<font color='#000001'>Name Players?</font>"));
+
 
         builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
             @Override

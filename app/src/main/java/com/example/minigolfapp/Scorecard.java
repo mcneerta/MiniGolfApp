@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -235,7 +236,7 @@ public class Scorecard extends AppCompatActivity {
 
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Finish Game?");
+        builder.setTitle(Html.fromHtml("<font color='#000001'>Finish game?</font>"));
         // add the buttons
         builder.setPositiveButton("No", null);
         builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {

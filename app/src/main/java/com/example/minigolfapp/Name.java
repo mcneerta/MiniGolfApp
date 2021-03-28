@@ -2,8 +2,10 @@ package com.example.minigolfapp;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -54,6 +56,7 @@ public class Name extends AppCompatActivity {
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsH = (int) (density * 46.667);
         int pixelsV = (int) (density * 45.334);
+        int white = getResources().getColor(android.R.color.white);
 
         for(int i = 0; i < playerNum; i++){
             TableRow namesRow = new TableRow(this);
@@ -65,10 +68,14 @@ public class Name extends AppCompatActivity {
             namesRow.addView(nameNumber);
 
             EditText nameEdit = new EditText(this);
+            ColorStateList x = ColorStateList.valueOf(white);
+            ViewCompat.setBackgroundTintList(nameEdit, x);
+            nameEdit.setTextColor(white);
             nameEdit.setWidth(pixelsH * 3);
             nameEdit.setTextSize(18);
             nameEdit.setGravity(Gravity.CENTER);
             nameEdit.setHint("Player " + Integer.toString(i + 1));
+            nameEdit.setHintTextColor(white);
             nameEdit.setInputType(InputType.TYPE_CLASS_TEXT);
             nameEdits.add(nameEdit);
             namesRow.addView(nameEdit);
