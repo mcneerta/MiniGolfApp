@@ -31,7 +31,7 @@ import java.util.List;
 public class Scorecard extends AppCompatActivity {
 
     public static List<TextView> totalList = new ArrayList<>();
-    List<EditText> scoreList = new ArrayList<>();
+    public static List<EditText> scoreList = new ArrayList<>();
     public static List<TextView> nameList = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;

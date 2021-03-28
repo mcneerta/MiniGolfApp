@@ -52,6 +52,9 @@ public class Results extends AppCompatActivity {
     }
 
     public void returnClick(View v) {
+        Scorecard.scoreList.clear();
+        Scorecard.totalList.clear();
+        Scorecard.nameStrings.clear();
         startActivity(new Intent(Results.this, MainActivity.class));
     }
 }
