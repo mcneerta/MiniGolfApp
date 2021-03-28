@@ -33,6 +33,7 @@ public class Scorecard extends AppCompatActivity {
     public static List<TextView> totalList = new ArrayList<>();
     List<EditText> scoreList = new ArrayList<>();
     public static List<TextView> nameList = new ArrayList<>();
+    public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;
 
     int numPlayers = MainActivity.numPlayers;
@@ -141,7 +142,7 @@ public class Scorecard extends AppCompatActivity {
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
             if (playersNamed) {
-                playerName = Name.nameStrings.get(i);
+                playerName = nameStrings.get(i);
             } else {
                 playerName = "Player " + (i+1);
             }
@@ -202,6 +203,16 @@ public class Scorecard extends AppCompatActivity {
 
             tableScore.addView(sRow);
         }
+        //Adds names to nameStrings if custom names were not added
+        if (nameStrings.isEmpty()){
+            fillNames();
+        }
+    }
+
+    public void fillNames(){
+        for (int i = 0; i < numPlayers; i++){
+            nameStrings.add("Player " + Integer.toString(i + 1));
+        }
     }
 
     public void setTotals(){
@@ -235,7 +246,7 @@ public class Scorecard extends AppCompatActivity {
 
                 int winnerValue = Collections.min(totalIntList);
                 int winnerIndex = totalIntList.indexOf(winnerValue);
-                winnerName = Name.nameStrings.get(winnerIndex);
+                winnerName = nameStrings.get(winnerIndex);
                 // do something like...
                 finishGameClick(view);
 

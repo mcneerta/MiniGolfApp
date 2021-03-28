@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Name extends AppCompatActivity {
 
     public static List<EditText> nameEdits = new ArrayList<>();
-    public static List<String> nameStrings = new ArrayList<>();
     int playerNum = MainActivity.numPlayers;
 
 
@@ -79,13 +79,13 @@ public class Name extends AppCompatActivity {
     }
 
     public void startClick(View v){
-        nameStrings.clear();
+        Scorecard.nameStrings.clear();
         for (int i = 0; i < nameEdits.size(); i++){
             if (!nameEdits.get(i).getText().toString().isEmpty()) {
-                nameStrings.add(nameEdits.get(i).getText().toString());
+                Scorecard.nameStrings.add(nameEdits.get(i).getText().toString());
             }
             else{
-                nameStrings.add("Player " + Integer.toString(i + 1));
+                Scorecard.nameStrings.add("Player " + Integer.toString(i + 1));
             }
         }
         startActivity(new Intent(Name.this, Scorecard.class));

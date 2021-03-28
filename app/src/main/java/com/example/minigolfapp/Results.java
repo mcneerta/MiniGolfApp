@@ -30,11 +30,11 @@ public class Results extends AppCompatActivity {
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
 
-        for (int i = 0; i < Name.nameStrings.size()/*Scorecard.nameList.size()*/; i++) {
+        for (int i = 0; i < MainActivity.numPlayers; i++) {
             TableRow nRow = new TableRow(this);
             TextView name = new TextView(this);
             name.setHeight(136);
-            name.setText(Name.nameStrings.get(i));//nameList.get(i).getText().toString());
+            name.setText(Scorecard.nameStrings.get(i));
             name.setTextSize(18);
 //            name.setGravity(CENTER);
             nRow.addView(name);
