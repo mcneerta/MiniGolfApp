@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,29 +26,27 @@ public class Results extends AppCompatActivity {
 
     public void init(){
         TextView winner = (TextView) findViewById(R.id.winner);
-        TableLayout playerNameList = (TableLayout) findViewById(R.id.playerNamesList);
-        TableLayout playerScoreList = (TableLayout) findViewById(R.id.playerScoresList);
+        LinearLayout left = findViewById(R.id.GridLayout1);
+        LinearLayout right = findViewById(R.id.GridLayout2);
+
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
 
         for (int i = 0; i < MainActivity.numPlayers; i++) {
-            TableRow nRow = new TableRow(this);
             TextView name = new TextView(this);
             name.setHeight(136);
             name.setText(Scorecard.nameStrings.get(i));
             name.setTextSize(18);
-//            name.setGravity(CENTER);
-            nRow.addView(name);
-            playerNameList.addView(nRow);
+            name.setGravity(CENTER);
+            left.addView(name);
 
-            TableRow sRow = new TableRow(this);
             TextView playerTotal = new TextView(this);
             playerTotal.setHeight(136);
             playerTotal.setText(Scorecard.totalList.get(i).getText().toString());
             playerTotal.setTextSize(18);
-//            playerTotal.setGravity(CENTER_VERTICAL);
-            sRow.addView(playerTotal);
-            playerScoreList.addView(sRow);
+            playerTotal.setGravity(CENTER);
+            right.addView(playerTotal);
+
         }
     }
 

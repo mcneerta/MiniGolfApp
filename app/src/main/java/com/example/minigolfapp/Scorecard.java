@@ -118,7 +118,7 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
         float density = this.getResources().getDisplayMetrics().density;
-        int pixelsV = (int) (density * 45.334);
+        int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 46.667);
 
         TableRow hRow = new TableRow(this);
@@ -238,8 +238,7 @@ public class Scorecard extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(Html.fromHtml("<font color='#000001'>Finish game?</font>"));
         // add the buttons
-        builder.setPositiveButton("No", null);
-        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 List<Integer> totalIntList = new ArrayList<>();
@@ -253,6 +252,8 @@ public class Scorecard extends AppCompatActivity {
 
             }
         });
+        builder.setNegativeButton("No", null);
+
 
         // create and show the alert dialog
         AlertDialog dialog = builder.create();

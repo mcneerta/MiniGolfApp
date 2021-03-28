@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         players.setLayoutParams(lp);
         builder.setView(players);
         // add the buttons
-        builder.setPositiveButton("Cancel", null);
-        builder.setNegativeButton("Enter", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(players.getText().length() > 0) {
@@ -49,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 showNamePlayersDialog(v);
             }
         });
+        builder.setNegativeButton("Cancel", null);
+
 
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
@@ -59,20 +60,20 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(Html.fromHtml("<font color='#000001'>Name Players?</font>"));
 
-
-        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(MainActivity.this, Name.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 playersNamed = false;
                 startActivity(new Intent(MainActivity.this, Scorecard.class));
             }
         });
-        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(MainActivity.this, Name.class));
-            }
-        });
+
 
         // create and show the alert dialog
         AlertDialog dialog = builder.create();

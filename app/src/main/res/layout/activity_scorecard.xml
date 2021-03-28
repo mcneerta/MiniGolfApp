@@ -47,18 +47,18 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="350dp"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55">
+        app:layout_constraintVertical_bias="0.56">
 
         <GridLayout
             android:id="@+id/GridLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -80,7 +80,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewNames"
                 android:layout_width="75dp"
-                android:layout_height="335dp"
+                android:layout_height="310dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
         <GridLayout
             android:id="@+id/GridLayout1"
             android:layout_width="wrap_content"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -109,7 +109,7 @@
 
             <HorizontalScrollView
                 android:id="@+id/ScrollViewHoles"
-                android:layout_width="182dp"
+                android:layout_width="184dp"
                 android:layout_height="30dp"
                 android:layout_row="0"
                 android:layout_column="1"
@@ -135,7 +135,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewScoresV"
                 android:layout_width="wrap_content"
-                android:layout_height="335dp"
+                android:layout_height="310dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +144,7 @@
 
                 <HorizontalScrollView
                     android:id="@+id/ScrollViewScoresH"
-                    android:layout_width="182dp"
+                    android:layout_width="184dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
@@ -169,7 +169,7 @@
         <GridLayout
             android:id="@+id/GridLayout3"
             android:layout_width="wrap_content"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_gravity="start"
             android:layout_marginTop="104dp"
             android:orientation="vertical">
@@ -179,10 +179,8 @@
                 android:layout_width="75dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="70dp"
-                android:layout_marginEnd="39dp"
-                android:layout_marginRight="39dp"
                 android:fontFamily="@font/asap_bold"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:text="Totals"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -192,7 +190,7 @@
             <ScrollView
                 android:id="@+id/ScrollViewTotals"
                 android:layout_width="75dp"
-                android:layout_height="325dp"
+                android:layout_height="300dp"
                 android:layout_marginTop="0dp">
 
                 <TableLayout
@@ -212,7 +210,7 @@
         android:id="@+id/FinishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="90dp"
         android:fontFamily="@font/asap_bold"
         android:onClick="finishClick"
         android:text="Finish Game"
