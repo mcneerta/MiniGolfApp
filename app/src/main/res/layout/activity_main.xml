@@ -10,7 +10,6 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:scaleType="centerCrop"
         android:src="?attr/background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +37,8 @@
         android:id="@+id/StartButton"
         android:layout_width="203dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="204dp"
-        android:backgroundTint="@color/golf_course_green_yellow"
+        android:layout_marginBottom="200dp"
+
         android:fontFamily="@font/asap_bold"
         android:onClick="startClick"
         android:text="@string/start_text"

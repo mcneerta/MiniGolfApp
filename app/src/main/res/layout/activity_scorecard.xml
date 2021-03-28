@@ -36,14 +36,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/golf_course_green_yellow"
         android:src="@mipmap/ic_launcher_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!--        android:text="Settings"-->
-    <!--        android:backgroundTint="@color/golf_course_green_yellow"-->
 
 
     <LinearLayout
@@ -215,7 +213,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:backgroundTint="@color/golf_course_green_yellow"
         android:fontFamily="@font/asap_bold"
         android:onClick="finishClick"
         android:text="Finish Game"

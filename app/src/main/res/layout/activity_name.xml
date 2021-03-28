@@ -55,7 +55,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
-        android:backgroundTint="@color/golf_course_green_yellow"
         android:fontFamily="@font/asap_bold"
         android:onClick="startClick"
         android:text="@string/start_text"
