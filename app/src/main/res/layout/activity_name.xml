@@ -25,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498">
+        app:layout_constraintVertical_bias="0.631">
 
         <TableLayout
             android:id="@+id/namesTable"
@@ -37,7 +37,7 @@
         android:id="@+id/textView2"
         android:layout_width="210dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="Player Names"
         android:textColor="#0B0606"

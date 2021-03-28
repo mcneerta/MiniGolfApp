@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                playersNamed = false;
                 startActivity(new Intent(MainActivity.this, Scorecard.class));
             }
         });
