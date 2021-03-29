@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
@@ -31,7 +32,15 @@ public class MainActivity extends AppCompatActivity {
 
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
+
+        switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
+            case Configuration.UI_MODE_NIGHT_YES:
+                builder.setTitle(Html.fromHtml("<font color='#ffffff'>How many players?</font>"));
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
+                break;
+        }
         EditText players = new EditText(MainActivity.this);
         players.setInputType(InputType.TYPE_CLASS_NUMBER);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -83,7 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void showNamePlayersDialog(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(Html.fromHtml("<font color='#000001'>Name Players?</font>"));
+        switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
+            case Configuration.UI_MODE_NIGHT_YES:
+                builder.setTitle(Html.fromHtml("<font color='#ffffff'>How many players?</font>"));
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
+                break;
+        }
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override

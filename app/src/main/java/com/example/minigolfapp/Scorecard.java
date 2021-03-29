@@ -3,6 +3,7 @@ package com.example.minigolfapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class Scorecard extends AppCompatActivity {
     public static String winnerName;
 
     int numPlayers = MainActivity.numPlayers;
-    int numHoles = 6;
+    int numHoles = 18;
     boolean playersNamed = MainActivity.playersNamed;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -159,6 +160,7 @@ public class Scorecard extends AppCompatActivity {
             TableRow tRow = new TableRow(this);
             TextView total = new TextView(this);
             total.setHeight(pixelsV);
+            total.setWidth((int) (density * 75));
             total.setGravity(Gravity.CENTER);
             //String totalScore = 0;
             total.setText("0");
@@ -236,7 +238,14 @@ public class Scorecard extends AppCompatActivity {
 
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(Html.fromHtml("<font color='#000001'>Finish game?</font>"));
+        switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
+            case Configuration.UI_MODE_NIGHT_YES:
+                builder.setTitle(Html.fromHtml("<font color='#ffffff'>How many players?</font>"));
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
+                break;
+        }
         // add the buttons
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override

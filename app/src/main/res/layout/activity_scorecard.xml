@@ -67,7 +67,6 @@
                 android:layout_width="75dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/asap_bold"
                 android:gravity="center_horizontal"
                 android:text="Holes"
@@ -89,7 +88,7 @@
                     android:id="@+id/table_names"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:paddingTop="10dp">
 
                 </TableLayout>
 
@@ -147,9 +146,9 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
+                    android:paddingTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -189,15 +188,12 @@
             <ScrollView
                 android:id="@+id/ScrollViewTotals"
                 android:layout_width="75dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="0dp">
+                android:layout_height="300dp">
 
                 <TableLayout
                     android:id="@+id/table_totals"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_height="wrap_content" />
 
             </ScrollView>
 
