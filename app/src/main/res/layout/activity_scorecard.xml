@@ -41,7 +41,6 @@
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--        android:text="Settings"-->
 
 
     <LinearLayout

@@ -35,7 +35,7 @@
         android:id="@+id/ReturnButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="64dp"
         android:onClick="returnClick"
         android:text="Return to Menu"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,22 +53,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65999997">
-
-        <LinearLayout
-            android:id="@+id/GridLayout1"
+        <ScrollView
+            android:id="@+id/ScrollViewPlayers"
             android:layout_width="161dp"
             android:layout_height="350dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="104dp"
-            android:orientation="vertical" />
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/GridLayout2"
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="161dp"
+                android:layout_height="350dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <ScrollView
+            android:id="@+id/ScrollViewScores"
             android:layout_width="161dp"
             android:layout_height="350dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="104dp"
-            android:orientation="vertical" />
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/LinearLayout2"
+                android:layout_width="161dp"
+                android:layout_height="350dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical" />
+        </ScrollView>
+
+
     </LinearLayout>
 
 

@@ -1,11 +1,14 @@
 package com.example.minigolfapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,18 +19,41 @@ import static android.view.Gravity.CENTER_VERTICAL;
 
 public class Results extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+
+        ScrollView scores = findViewById(R.id.ScrollViewScores);
+        ScrollView names = findViewById(R.id.ScrollViewPlayers);
+
+        scores.setVerticalScrollBarEnabled(false);
+        names.setVerticalScrollBarEnabled(false);
+
+        View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                scores.setScrollY(y);
+            }
+        };
+        names.setOnScrollChangeListener(scrollChange2);
+
+        View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
+                names.setScrollY(y);
+            }
+        };
+        scores.setOnScrollChangeListener(scrollChange);
 
         init();
     }
 
     public void init(){
         TextView winner = (TextView) findViewById(R.id.winner);
-        LinearLayout left = findViewById(R.id.GridLayout1);
-        LinearLayout right = findViewById(R.id.GridLayout2);
+        LinearLayout left = findViewById(R.id.LinearLayout1);
+        LinearLayout right = findViewById(R.id.LinearLayout2);
 
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
