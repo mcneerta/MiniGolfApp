@@ -86,6 +86,8 @@ public class Name extends AppCompatActivity {
     }
 
     public void startClick(View v){
+        Scorecard.scoreList.clear();
+        Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
         for (int i = 0; i < nameEdits.size(); i++){
             if (!nameEdits.get(i).getText().toString().isEmpty()) {

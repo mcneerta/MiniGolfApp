@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startClick(View v){
+        Scorecard.scoreList.clear();
+        Scorecard.totalList.clear();
+        Scorecard.nameStrings.clear();
         showEnterPlayersDialog(v);
         //startActivity(new Intent(MainActivity.this, Scorecard.class));
     }
