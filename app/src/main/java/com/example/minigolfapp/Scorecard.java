@@ -240,10 +240,10 @@ public class Scorecard extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
             case Configuration.UI_MODE_NIGHT_YES:
-                builder.setTitle(Html.fromHtml("<font color='#ffffff'>How many players?</font>"));
+                builder.setTitle(Html.fromHtml("<font color='#ffffff'>Finish game?</font>"));
                 break;
             case Configuration.UI_MODE_NIGHT_NO:
-                builder.setTitle(Html.fromHtml("<font color='#000001'>How many players?</font>"));
+                builder.setTitle(Html.fromHtml("<font color='#000001'>Finish game?</font>"));
                 break;
         }
         // add the buttons
