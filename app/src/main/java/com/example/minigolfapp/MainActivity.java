@@ -3,6 +3,7 @@ package com.example.minigolfapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,13 +44,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(players.getText().length() > 0) {
-                    numPlayers = Integer.parseInt(players.getText().toString());
+                    if(Integer.parseInt(players.getText().toString()) > 0 && Integer.parseInt(players.getText().toString()) <= 10) {
+                        numPlayers = Integer.parseInt(players.getText().toString());
+                        showNamePlayersDialog(v);
+                    }
+                    else if(Integer.parseInt(players.getText().toString()) > 10){
+                        Context context = getApplicationContext();
+                        CharSequence text = "No more than 10 players!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                    else if(Integer.parseInt(players.getText().toString()) <= 0){
+                        Context context = getApplicationContext();
+                        CharSequence text = "You need at least one player!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
                 }
-                showNamePlayersDialog(v);
             }
         });
         builder.setNegativeButton("Cancel", null);
-
 
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
