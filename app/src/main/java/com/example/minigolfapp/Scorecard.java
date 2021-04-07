@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -179,6 +180,7 @@ public class Scorecard extends AppCompatActivity {
 
                 holeScore.setGravity(Gravity.CENTER);
                 holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+                holeScore.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
 
                 holeScore.addTextChangedListener(new TextWatcher() {
                     @Override
