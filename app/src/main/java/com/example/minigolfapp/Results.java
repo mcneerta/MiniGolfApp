@@ -61,12 +61,23 @@ public class Results extends AppCompatActivity {
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
 
-
+        // list 1 is "3", "1", "0", "4"
+        // list 2 is "0", "1", "3", "4"
+        // get index of where each element in list 2 is located in list 1
         for (int i = 0; i < Scorecard.totalList.size(); i++) {
             sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
         }
-
         Collections.sort(sortedScoresList);
+
+        for (int i = 0; i < sortedScoresList.size(); i++) {
+            for (int j = 0; j < Scorecard.totalList.size(); j++) {
+                if (sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
+                    sortedNamesList.add(i, Scorecard.nameStrings.get(j));
+                }
+            }
+        }
+
+
 //            int tempVal_I = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
 //            for(int j = i + 1; j < Scorecard.totalList.size(); j++) {
 //                if (tempVal_I < Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
@@ -101,8 +112,7 @@ public class Results extends AppCompatActivity {
         for (int i = 0; i < MainActivity.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
-            name.setText(Scorecard.nameStrings.get(i));
-//            name.setText(sortedNamesList.get(i));
+            name.setText(sortedNamesList.get(i));
             name.setTextSize(18);
             name.setGravity(CENTER);
             left.addView(name);
@@ -110,7 +120,6 @@ public class Results extends AppCompatActivity {
             TextView playerTotal = new TextView(this);
             playerTotal.setHeight(136);
 
-//            playerTotal.setText(Scorecard.totalList.get(i).getText().toString());
             playerTotal.setText(String.valueOf(sortedScoresList.get(i)));
             playerTotal.setTextSize(18);
             playerTotal.setGravity(CENTER);
