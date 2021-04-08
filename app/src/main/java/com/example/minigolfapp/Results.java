@@ -9,15 +9,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static android.view.Gravity.CENTER;
-import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.CENTER_VERTICAL;
 
 public class Results extends AppCompatActivity {
+
+    List<Integer> sortedScoresList = new ArrayList<>();
+    List<String> sortedNamesList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -58,17 +61,57 @@ public class Results extends AppCompatActivity {
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
 
+
+        for (int i = 0; i < Scorecard.totalList.size(); i++) {
+            sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
+        }
+
+        Collections.sort(sortedScoresList);
+//            int tempVal_I = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
+//            for(int j = i + 1; j < Scorecard.totalList.size(); j++) {
+//                if (tempVal_I < Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
+//
+//                    Scorecard.totalList.set(i, Scorecard.totalList.get(j));
+//                    Scorecard.totalList.set(j, Scorecard.totalList.get(i));
+//                }
+//            }
+//        }
+
+//        for (int i = 0; i < Scorecard.totalList.size(); i++) {
+//            int tempValue = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
+//            for (int j = i + 1; j < Scorecard.totalList.size(); j++) {
+//               if (tempValue <= Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
+////                   sortedScoresList.set(i, Scorecard.totalList.get(i));
+////                   System.out.println(sortedScoresList);
+////                   sortedScoresList.get(i).setText(Scorecard.totalList.get(i).getText().toString());
+//                   sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
+//
+//               }
+//           }
+//        }
+//
+//        for (int i = 0; i < Scorecard.nameStrings.size(); i++) {
+//            for (int j = 0; j < Scorecard.nameStrings.size(); j++) {
+//                if (sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
+//                    sortedNamesList.add(Scorecard.nameStrings.get(j));
+//                }
+//            }
+//        }
+
         for (int i = 0; i < MainActivity.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
             name.setText(Scorecard.nameStrings.get(i));
+//            name.setText(sortedNamesList.get(i));
             name.setTextSize(18);
             name.setGravity(CENTER);
             left.addView(name);
 
             TextView playerTotal = new TextView(this);
             playerTotal.setHeight(136);
-            playerTotal.setText(Scorecard.totalList.get(i).getText().toString());
+
+//            playerTotal.setText(Scorecard.totalList.get(i).getText().toString());
+            playerTotal.setText(String.valueOf(sortedScoresList.get(i)));
             playerTotal.setTextSize(18);
             playerTotal.setGravity(CENTER);
             right.addView(playerTotal);
