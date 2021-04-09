@@ -40,7 +40,7 @@
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/asap_bolditalic"
         android:gravity="center"
-        android:text="Player Names"
+        android:text="@string/player_names"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/ScrollViewNamesInput"

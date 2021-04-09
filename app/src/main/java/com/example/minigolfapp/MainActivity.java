@@ -26,13 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
     public static boolean playersNamed = false;
     public static int numPlayers = 1;
-    public static final String FILE_NAME = "games.txt";
-    public static GameSave[] saves = new GameSave[5];
+//  public static final String FILE_NAME = "games.txt";
+    public GameSave[] games;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        games = SaveHelper.load(this);
+
+        if(games == null) {
+            games = new GameSave[5];
+        }
     }
 
     public void showEnterPlayersDialog(View v) {
@@ -136,17 +141,21 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(MainActivity.this, Scorecard.class));
     }
 
-    private GameSave[] loadGames(View v){
-        FileInputStream fis = null;
-        GameSave[] games = new GameSave[5];
-
-        try {
-            fis = openFileInput(FILE_NAME);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return games;
+    public void savedClick(View v){
+        startActivity(new Intent(MainActivity.this, SavedGames.class));
     }
+
+//    private GameSave[] loadGames(View v){
+//        FileInputStream fis = null;
+//        GameSave[] games = new GameSave[5];
+//
+//        try {
+//            fis = openFileInput(FILE_NAME);
+//            InputStreamReader isr = new InputStreamReader(fis);
+//            BufferedReader br = new BufferedReader(isr);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return games;
+//    }
 }

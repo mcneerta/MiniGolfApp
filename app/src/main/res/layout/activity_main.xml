@@ -10,12 +10,11 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="?attr/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="?attr/background"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/textView"
@@ -34,14 +33,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/NewGameButton"
         android:layout_width="203dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="250dp"
 
         android:fontFamily="@font/asap_bold"
         android:onClick="startClick"
-        android:text="@string/start_text"
+        android:text="@string/new_game"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/SavedGamesButton"
+        android:layout_width="203dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="175dp"
+
+        android:fontFamily="@font/asap_bold"
+        android:onClick="savedClick"
+        android:text="@string/saved_games"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textSize="18sp"
