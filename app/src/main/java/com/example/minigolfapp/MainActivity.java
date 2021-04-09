@@ -13,6 +13,11 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.*;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static boolean playersNamed = false;
     public static int numPlayers = 1;
+    public static final String FILE_NAME = "games.txt";
+    public static GameSave[] saves = new GameSave[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,5 +134,19 @@ public class MainActivity extends AppCompatActivity {
         Scorecard.nameStrings.clear();
         showEnterPlayersDialog(v);
         //startActivity(new Intent(MainActivity.this, Scorecard.class));
+    }
+
+    private GameSave[] loadGames(View v){
+        FileInputStream fis = null;
+        GameSave[] games = new GameSave[5];
+
+        try {
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return games;
     }
 }
