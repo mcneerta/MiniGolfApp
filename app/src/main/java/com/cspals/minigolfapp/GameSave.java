@@ -1,4 +1,4 @@
-package com.example.minigolfapp;
+package com.cspals.minigolfapp;
 
 public class GameSave {
     int numPlayers;
