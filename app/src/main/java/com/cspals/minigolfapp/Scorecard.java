@@ -279,38 +279,11 @@ public class Scorecard extends AppCompatActivity {
         return totalIntList;
     }
 
-//    public void showWinnerAlertDialogButtonClicked(View view) {
-//
-//        List<Integer> totalIntList = new ArrayList<>();
-//        totalIntList = getTotalIntList();
-//
-//        int winnerValue = Collections.min(totalIntList);
-//        int winnerIndex = totalIntList.indexOf(winnerValue);
-//        winnerName = nameList.get(winnerIndex).getText().toString();
-//        // setup the alert builder
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("The winner is " + winnerName + "!");
-//        // add the buttons
-//        builder.setPositiveButton("Return to Menu", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//                backClick(view);
-//            }
-//        });
-
-//        // create and show the alert dialog
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
-
     public void backClick(View v){
         startActivity(new Intent(Scorecard.this, MainActivity.class));
     }
 
     public void finishGameClick(View v){
-
-//        showWinnerAlertDialogButtonClicked(v);
         startActivity(new Intent(Scorecard.this, Results.class));
     }
 

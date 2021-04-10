@@ -19,8 +19,7 @@ import static android.view.Gravity.CENTER;
 
 public class Results extends AppCompatActivity {
 
-    List<Integer> sortedScoresList = new ArrayList<>();
-    List<String> sortedNamesList = new ArrayList<>();
+    List<PlayerResult> sortedResultsList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -61,50 +60,26 @@ public class Results extends AppCompatActivity {
         String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
         winner.setText(winnerMessage);
 
+        for (int i = 0; i < Scorecard.totalList.size(); i++) {
+            String playerName = Scorecard.nameStrings.get(i);
+            Integer playerScore = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
+            sortedResultsList.add(new PlayerResult(playerName, playerScore));
+        }
+        Collections.sort(sortedResultsList);
+
+
         // list 1 is "3", "1", "0", "4"
         // list 2 is "0", "1", "3", "4"
         // get index of where each element in list 2 is located in list 1
-        for (int i = 0; i < Scorecard.totalList.size(); i++) {
-            sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
-        }
-        Collections.sort(sortedScoresList);
-
-        for (int i = 0; i < sortedScoresList.size(); i++) {
-            for (int j = 0; j < Scorecard.totalList.size(); j++) {
-                if (sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
-                    sortedNamesList.add(i, Scorecard.nameStrings.get(j));
-                }
-            }
-        }
-
-
-//            int tempVal_I = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
-//            for(int j = i + 1; j < Scorecard.totalList.size(); j++) {
-//                if (tempVal_I < Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
-//
-//                    Scorecard.totalList.set(i, Scorecard.totalList.get(j));
-//                    Scorecard.totalList.set(j, Scorecard.totalList.get(i));
-//                }
-//            }
-//        }
-
 //        for (int i = 0; i < Scorecard.totalList.size(); i++) {
-//            int tempValue = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
-//            for (int j = i + 1; j < Scorecard.totalList.size(); j++) {
-//               if (tempValue <= Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
-////                   sortedScoresList.set(i, Scorecard.totalList.get(i));
-////                   System.out.println(sortedScoresList);
-////                   sortedScoresList.get(i).setText(Scorecard.totalList.get(i).getText().toString());
-//                   sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
-//
-//               }
-//           }
+//            sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
 //        }
+//        Collections.sort(sortedScoresList);
 //
-//        for (int i = 0; i < Scorecard.nameStrings.size(); i++) {
-//            for (int j = 0; j < Scorecard.nameStrings.size(); j++) {
-//                if (sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString())) {
-//                    sortedNamesList.add(Scorecard.nameStrings.get(j));
+//        for (int i = 0; i < sortedScoresList.size(); i++) {
+//            for (int j = 0; j < Scorecard.totalList.size(); j++) {
+//                if ((sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString()))) {
+//                    sortedNamesList.add(i, Scorecard.nameStrings.get(j));
 //                }
 //            }
 //        }
@@ -112,7 +87,7 @@ public class Results extends AppCompatActivity {
         for (int i = 0; i < MainActivity.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
-            name.setText(sortedNamesList.get(i));
+            name.setText(sortedResultsList.get(i).getPlayerName());
             name.setTextSize(18);
             name.setGravity(CENTER);
             left.addView(name);
@@ -120,7 +95,7 @@ public class Results extends AppCompatActivity {
             TextView playerTotal = new TextView(this);
             playerTotal.setHeight(136);
 
-            playerTotal.setText(String.valueOf(sortedScoresList.get(i)));
+            playerTotal.setText(String.valueOf(sortedResultsList.get(i).getPlayerScore()));
             playerTotal.setTextSize(18);
             playerTotal.setGravity(CENTER);
             right.addView(playerTotal);
