@@ -284,7 +284,8 @@ public class Scorecard extends AppCompatActivity {
     }
 
     public void settingsClick(View v){
-        PopupMenu popup = new PopupMenu(this, v);
+        Context wrapper = new ContextThemeWrapper(this, R.style.Popup);
+        PopupMenu popup = new PopupMenu(wrapper, v);
         popup.inflate(R.menu.settings_popup);
         popup.show();
     }
