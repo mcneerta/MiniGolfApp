@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -288,6 +289,17 @@ public class Scorecard extends AppCompatActivity {
         PopupMenu popup = new PopupMenu(wrapper, v);
         popup.inflate(R.menu.settings_popup);
         popup.show();
+    }
+
+    public void onMenuItemClick(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.change:
+                //TODO: Change scorecard code
+            case R.id.save:
+                //TODO: Save Game code
+            case R.id.help:
+                //TODO: help code
+        }
     }
 
     public void backClick(View v){
