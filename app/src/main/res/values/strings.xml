@@ -5,4 +5,7 @@
     <string name="new_game">New Game</string>
     <string name="saved_games">Saved Games</string>
     <string name="player_names">Player Names</string>
+    <string name="change_scorecard">Change Scorecard</string>
+    <string name="save_game">Save Game</string>
+    <string name="help">Help</string>
 </resources>

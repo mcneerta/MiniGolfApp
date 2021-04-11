@@ -1,6 +1,7 @@
 package com.cspals.minigolfapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,10 +12,13 @@ import android.text.Html;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -277,6 +281,12 @@ public class Scorecard extends AppCompatActivity {
                     Integer.parseInt(totalList.get(i).getText().toString()));
         }
         return totalIntList;
+    }
+
+    public void settingsClick(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.inflate(R.menu.settings_popup);
+        popup.show();
     }
 
     public void backClick(View v){
