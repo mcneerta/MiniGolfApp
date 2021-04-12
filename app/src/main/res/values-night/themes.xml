@@ -18,4 +18,9 @@
         <item name="background">@drawable/app_background_dark</item>
         <item name="buttonStyle">@drawable/ic_launcher_settings_night</item>
     </style>
+
+    <style name="Popup" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:itemBackground">@drawable/menu_item_background_night</item>
+    </style>
 </resources>
