@@ -64,6 +64,8 @@ public class Scorecard extends AppCompatActivity {
         namesV.setVerticalScrollBarEnabled(false);
         totalsV.setVerticalScrollBarEnabled(false);
 
+//        onMenuItemClick();
+
         View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
@@ -288,26 +290,19 @@ public class Scorecard extends AppCompatActivity {
         Context wrapper = new ContextThemeWrapper(this, R.style.Popup);
         PopupMenu popup = new PopupMenu(wrapper, v);
         popup.inflate(R.menu.settings_popup);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.change:
-                        //TODO: Change scorecard code
-                        startActivity(new Intent(Scorecard.this, MainActivity.class));
-                        return true;
-                    case R.id.save:
-                        //TODO: Save Game code
-                        return true;
-                    case R.id.help:
-                        //TODO: help code
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
         popup.show();
+    }
+
+    public void onMenuItemClick(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.change:
+                //TODO: Change scorecard code
+            case R.id.save:
+                //TODO: Save Game code
+            case R.id.help:
+                //TODO: help code
+                startActivity(new Intent(Scorecard.this, Help.class));
+        }
     }
 
     public void backClick(View v){

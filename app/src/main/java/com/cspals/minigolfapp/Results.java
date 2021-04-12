@@ -87,7 +87,7 @@ public class Results extends AppCompatActivity {
         for (int i = 0; i < MainActivity.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
-            String input = Integer.toString(i + 1) + ".   " + sortedResultsList.get(i).getPlayerName();
+            String input = (i + 1) + ".   " + sortedResultsList.get(i).getPlayerName();
             name.setText(input);
             name.setTextSize(18);
             name.setGravity(CENTER);
