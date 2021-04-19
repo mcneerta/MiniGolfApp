@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(players.getText().length() > 0) {
-                    if(Integer.parseInt(players.getText().toString()) > 0 && Integer.parseInt(players.getText().toString()) <= 10) {
+                String playersStr = players.getText().toString();
+
+                if(playersStr.length() > 0 && playersStr.length() < 3) {
+                    if(Integer.parseInt(playersStr) > 0 && Integer.parseInt(playersStr) <= 10) {
                         numPlayers = Integer.parseInt(players.getText().toString());
                         showNamePlayersDialog(v);
                     }
-                    else if(Integer.parseInt(players.getText().toString()) > 10){
+                    else if(Integer.parseInt(playersStr) > 10){
                         Context context = getApplicationContext();
                         CharSequence text = "No more than 10 players!";
                         int duration = Toast.LENGTH_SHORT;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
-                    else if(Integer.parseInt(players.getText().toString()) <= 0){
+                    else if(Integer.parseInt(playersStr) <= 0){
                         Context context = getApplicationContext();
                         CharSequence text = "You need at least one player!";
                         int duration = Toast.LENGTH_SHORT;
@@ -78,7 +80,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else {
                     Context context = getApplicationContext();
-                    CharSequence text = "You need at least one player!";
+                    CharSequence text;
+                    if(playersStr.length() < 0){
+                        text = "You need at least one player!";
+                    }
+                    else{
+                        text = "No more than 10 players!";
+                    }
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
