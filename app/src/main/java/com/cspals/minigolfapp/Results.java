@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -67,30 +68,13 @@ public class Results extends AppCompatActivity {
         }
         Collections.sort(sortedResultsList);
 
-
-        // list 1 is "3", "1", "0", "4"
-        // list 2 is "0", "1", "3", "4"
-        // get index of where each element in list 2 is located in list 1
-//        for (int i = 0; i < Scorecard.totalList.size(); i++) {
-//            sortedScoresList.add(Integer.parseInt(Scorecard.totalList.get(i).getText().toString()));
-//        }
-//        Collections.sort(sortedScoresList);
-//
-//        for (int i = 0; i < sortedScoresList.size(); i++) {
-//            for (int j = 0; j < Scorecard.totalList.size(); j++) {
-//                if ((sortedScoresList.get(i) == Integer.parseInt(Scorecard.totalList.get(j).getText().toString()))) {
-//                    sortedNamesList.add(i, Scorecard.nameStrings.get(j));
-//                }
-//            }
-//        }
-
         for (int i = 0; i < MainActivity.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
             String input = (i + 1) + ".   " + sortedResultsList.get(i).getPlayerName();
             name.setText(input);
             name.setTextSize(18);
-            name.setGravity(CENTER);
+            name.setGravity(Gravity.START);
             left.addView(name);
 
             TextView playerTotal = new TextView(this);

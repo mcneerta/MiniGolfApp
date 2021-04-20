@@ -302,7 +302,6 @@ public class Scorecard extends AppCompatActivity {
                         //TODO: Save Game code
                         return true;
                     case R.id.help:
-                        //TODO: help code
                         startActivity(new Intent(Scorecard.this, Help.class));
                         return true;
                     default:
