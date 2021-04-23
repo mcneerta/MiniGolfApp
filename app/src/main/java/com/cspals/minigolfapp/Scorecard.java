@@ -118,6 +118,11 @@ public class Scorecard extends AppCompatActivity {
         init();
     }
 
+    @Override
+    protected void onStop(){
+        SaveHelper.save(this, MainActivity.games);
+        super.onStop();
+    }
 
     public void init() {
         TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);

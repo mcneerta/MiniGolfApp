@@ -1,15 +1,23 @@
 package com.cspals.minigolfapp;
 
-public class GameSave {
-    int numPlayers;
-    int numHoles;
-    String[] playerNames;
-    int[][] playerScores;
+import android.widget.EditText;
+import android.widget.TextView;
 
-    public void GameSave(int numPlayers, int numHoles, String[] playerNames, int[][] playerScores){
-        this.numPlayers = numPlayers;
-        this.numHoles = numHoles;
-        this.playerNames = playerNames;
-        this.playerScores = playerScores;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameSave {
+    public static List<TextView> totalList;
+    public static List<EditText> scoreList;
+    public static List<TextView> nameList;
+    public static List<String> nameStrings;
+    int players;
+
+    public void GameSave(List<TextView> totalList, List<EditText> scoreList, List<TextView> nameList, List<String> nameStrings, int players){
+        this.totalList = totalList;
+        this.scoreList = scoreList;
+        this.nameList = nameList;
+        this.nameStrings = nameStrings;
+        this.players = players;
     }
 }

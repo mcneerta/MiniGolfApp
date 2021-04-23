@@ -10,7 +10,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean playersNamed = false;
     public static int numPlayers = 1;
 //  public static final String FILE_NAME = "games.txt";
-    public GameSave[] games;
+    public static GameSave[] games;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
