@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
         <activity
+            android:name=".AddRemovePlayers"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ChangeScorecard"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Help"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Name"
             android:screenOrientation="portrait"
@@ -35,7 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SavedGames"/>
+        <activity android:name=".SavedGames" />
 
         <meta-data
             android:name="preloaded_fonts"

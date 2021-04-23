@@ -17,7 +17,4 @@ public class Help extends AppCompatActivity {
         helpText.setText("1. Please select each box to input a score\n\n2. The column indicates the hole number, while the row indicates the players. The total is displayed to the right.\n\nTo include par, click on the gear icon and click on 'Change Scorecard'");
     }
 
-    public void returnClick(View v) {
-        startActivity(new Intent(Help.this, Scorecard.class));
-    }
 }

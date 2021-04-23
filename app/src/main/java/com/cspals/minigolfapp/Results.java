@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static android.view.Gravity.CENTER;
+import static android.view.Gravity.CENTER_HORIZONTAL;
 
 public class Results extends AppCompatActivity {
 
@@ -82,7 +83,7 @@ public class Results extends AppCompatActivity {
 
             playerTotal.setText(String.valueOf(sortedResultsList.get(i).getPlayerScore()));
             playerTotal.setTextSize(18);
-            playerTotal.setGravity(CENTER);
+            playerTotal.setGravity(CENTER_HORIZONTAL);
             right.addView(playerTotal);
 
         }

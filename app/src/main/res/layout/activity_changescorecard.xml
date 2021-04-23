@@ -37,6 +37,7 @@
         android:layout_width="273dp"
         android:layout_height="73dp"
         android:fontFamily="@font/asap_bold"
+        android:onClick="addPlayerClick"
         android:text="@string/add_remove_players"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
