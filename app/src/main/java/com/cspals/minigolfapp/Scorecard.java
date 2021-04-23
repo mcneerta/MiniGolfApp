@@ -43,10 +43,10 @@ public class Scorecard extends AppCompatActivity {
     public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
+    public static int numHoles = 3;
 
-    public static int numPlayers = MainActivity.numPlayers;
-    public static int numHoles = 18;
     boolean playersNamed = MainActivity.playersNamed;
+    int numPlayers = MainActivity.numPlayers;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)

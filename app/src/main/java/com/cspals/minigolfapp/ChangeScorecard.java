@@ -19,4 +19,8 @@ public class ChangeScorecard extends AppCompatActivity {
         startActivity(new Intent(ChangeScorecard.this, AddRemovePlayers.class));
     }
 
+    public void changeHolesClick(View v){
+        startActivity(new Intent(ChangeScorecard.this, ChangeHoles.class));
+    }
+
 }

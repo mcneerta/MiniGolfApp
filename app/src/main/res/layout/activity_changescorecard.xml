@@ -81,6 +81,7 @@
         android:layout_width="273dp"
         android:layout_height="73dp"
         android:fontFamily="@font/asap_bold"
+        android:onClick="changeHolesClick"
         android:text="@string/change_holes"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
