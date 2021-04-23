@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
+        <activity android:name=".ChangeHoles"></activity>
         <activity
             android:name=".AddRemovePlayers"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ChangeScorecard"
             android:screenOrientation="portrait" />
