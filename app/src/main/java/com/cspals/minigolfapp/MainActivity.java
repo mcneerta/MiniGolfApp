@@ -12,6 +12,8 @@ import android.text.Html;
 import android.text.InputType;
 import android.view.View;
 import android.widget.*;
+import android.text.format.Time;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public static int numPlayers = 1;
 //  public static final String FILE_NAME = "games.txt";
     public static GameSave[] games;
-    public static int gameIndex;
+    public static int gameIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,53 @@ public class MainActivity extends AppCompatActivity {
         if(games == null) {
             games = new GameSave[5];
         }
-        for(int i = 0; i < 5; i++){
+
+        getGameIndex();
+//        TextView temp = findViewById(R.id.TempTestText);
+//        temp.setText(Integer.toString(gameIndex));
+    }
+
+    private void getGameIndex (){
+        Time compare = new Time();
+        compare.setToNow();
+
+        for(int i = 0; i < games.length; i++){
+
             if(games[i] == null){
                 gameIndex = i;
                 break;
             }
-            else if(i == 4){
-                gameIndex = 1;
+
+            GameSave current = games[i];
+
+            if(current.gameDate == null){
+                gameIndex = i;
+                break;
+            }
+
+            if(current.gameDate.year < compare.year){
+                gameIndex = i;
+                compare = current.gameDate;
+            }
+            else if(current.gameDate.year == compare.year && current.gameDate.month < compare.month){
+                gameIndex = i;
+                compare = current.gameDate;
+            }
+            else if(current.gameDate.month == compare.month && current.gameDate.monthDay < compare.monthDay){
+                gameIndex = i;
+                compare = current.gameDate;
+            }
+            else if(current.gameDate.monthDay == compare.monthDay && current.gameDate.hour < compare.hour){
+                gameIndex = i;
+                compare = current.gameDate;
+            }
+            else if(current.gameDate.hour == compare.hour && current.gameDate.minute < compare.minute){
+                gameIndex = i;
+                compare = current.gameDate;
+            }
+            else if(current.gameDate.minute == compare.minute && current.gameDate.second < compare.second){
+                gameIndex = i;
+                compare = current.gameDate;
             }
         }
     }
@@ -154,17 +196,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, SavedGames.class));
     }
 
-//    private GameSave[] loadGames(View v){
-//        FileInputStream fis = null;
-//        GameSave[] games = new GameSave[5];
-//
-//        try {
-//            fis = openFileInput(FILE_NAME);
-//            InputStreamReader isr = new InputStreamReader(fis);
-//            BufferedReader br = new BufferedReader(isr);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return games;
-//    }
 }
