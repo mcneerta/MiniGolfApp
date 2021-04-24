@@ -10,9 +10,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,15 +19,25 @@ public class MainActivity extends AppCompatActivity {
     public static int numPlayers = 1;
 //  public static final String FILE_NAME = "games.txt";
     public static GameSave[] games;
+    public static int gameIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        games = SaveHelper.load(this);
 
+        games = SaveHelper.load(this);
         if(games == null) {
             games = new GameSave[5];
+        }
+        for(int i = 0; i < 5; i++){
+            if(games[i] == null){
+                gameIndex = i;
+                break;
+            }
+            else if(i == 4){
+                gameIndex = 1;
+            }
         }
     }
 
