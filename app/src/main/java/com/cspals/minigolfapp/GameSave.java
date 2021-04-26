@@ -11,13 +11,13 @@ import java.util.List;
 
 public class GameSave {
     public static List<TextView> totalList;
-    public static List<EditText> scoreList;
+    public static EditText[][] scoreList;
     //public static List<TextView> nameList;
     public static List<String> nameStrings;
     int players;
     Time gameDate = new Time();
 
-    public GameSave(List<TextView> totalList, List<EditText> scoreList, /*List<TextView> nameList,*/ List<String> nameStrings, int players, Context context){
+    public GameSave(List<TextView> totalList, EditText[][] scoreList, /*List<TextView> nameList,*/ List<String> nameStrings, int players, Context context){
         this.totalList = totalList;
         this.scoreList = scoreList;
         //this.nameList = nameList;

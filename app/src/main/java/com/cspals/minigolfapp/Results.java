@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -90,7 +91,7 @@ public class Results extends AppCompatActivity {
     }
 
     public void returnClick(View v) {
-        Scorecard.scoreList.clear();
+        Scorecard.scoreList = new EditText[10][18];
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
         startActivity(new Intent(Results.this, MainActivity.class));

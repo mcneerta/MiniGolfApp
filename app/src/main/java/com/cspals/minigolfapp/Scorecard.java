@@ -38,12 +38,13 @@ import java.util.List;
 public class Scorecard extends AppCompatActivity {
 
     public static List<TextView> totalList = new ArrayList<>();
-    public static List<EditText> scoreList = new ArrayList<>();
+//    public static List<EditText> scoreList = new ArrayList<>();
+    public static EditText[][] scoreList = new EditText[10][18];
     //public static List<TextView> nameList = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
-    public static int numHoles = 3;
+    public static int numHoles = 18;
 
     boolean playersNamed = MainActivity.playersNamed;
     int numPlayers = MainActivity.numPlayers;
@@ -146,8 +147,13 @@ public class Scorecard extends AppCompatActivity {
         }
 
 
-        for(int i = 0; i < numHoles * numPlayers; i++){
-            ((TableRow) scoreList.get(i).getParent()).removeView(scoreList.get(i));
+        for(int i = 0; i < numPlayers; i++){
+            for (int j = 0; j < numHoles; j++) {
+                if(scoreList[i][j].getParent() != null) {
+                    ((TableRow) scoreList[i][j].getParent()).removeView(scoreList[i][j]);
+                }
+//                ((TableRow) scoreList.get(i).getParent()).removeView(scoreList.get
+            }
         }
 
         TableRow hRow = new TableRow(this);
@@ -193,10 +199,10 @@ public class Scorecard extends AppCompatActivity {
 
             TableRow sRow = new TableRow(this);
             sRow.setGravity(Gravity.LEFT);
-            for (int j = position; j < numHoles + position; j++) {
-                sRow.addView(scoreList.get(j));
+            for (int j = 0; j < numHoles; j++) {
+                sRow.addView(scoreList[i][j]);
             }
-            position += numHoles;
+//            position += numHoles;
 
             tableScore.addView(sRow);
         }
@@ -286,7 +292,7 @@ public class Scorecard extends AppCompatActivity {
                     }
                 });
 
-                scoreList.add(holeScore);
+                scoreList[i][j] = holeScore;
                 sRow.addView(holeScore);
             }
 
@@ -301,17 +307,15 @@ public class Scorecard extends AppCompatActivity {
 
 
     public void setTotals(){
-        int x = 0;
-        int j = 0;
+
         for(int i = 0; i < numPlayers; i++){
             int total = 0;
-            for(j = x; j < numHoles + x; j++){
-                String currentScore = scoreList.get(j).getText().toString();
+            for(int j = 0; j < numHoles; j++){
+                String currentScore = scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);
                 }
             }
-            x = j;
             totalList.get(i).setText(Integer.toString(total));
         }
     }

@@ -32,17 +32,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <TextView
-        android:id="@+id/textHelp"
-        android:layout_width="350dp"
-        android:layout_height="320dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+    <ScrollView
+        android:layout_width="358dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="296dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613"
-        tools:ignore="TextViewEdits" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_help"
+            android:textSize="18sp"
+            tools:ignore="TextViewEdits" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -86,7 +86,7 @@ public class Name extends AppCompatActivity {
     }
 
     public void startClick(View v){
-        Scorecard.scoreList.clear();
+        Scorecard.scoreList = new EditText[10][18];
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
         for (int i = 0; i < nameEdits.size(); i++){

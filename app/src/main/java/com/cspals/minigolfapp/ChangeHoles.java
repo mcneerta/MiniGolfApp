@@ -19,7 +19,7 @@ public class ChangeHoles extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_holes);
-        Scorecard.revisit = true;
+//        Scorecard.revisit = true;
         init();
     }
 
@@ -28,6 +28,7 @@ public class ChangeHoles extends AppCompatActivity {
     }
 
     public void changeHolesClick(View v){
+        Scorecard.revisit = true;
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 46.667);
@@ -37,9 +38,11 @@ public class ChangeHoles extends AppCompatActivity {
         Scorecard.numHoles = Integer.parseInt(newHoleNumText.getText().toString());
         int newHoleNum = Scorecard.numHoles;
 
+        // account for new Hole Num is larger
         if(oldHoleNum < newHoleNum){
             //int holesAd
             for(int i = 0; i < MainActivity.numPlayers; i++) {
+
                 for (int j = 0; j < newHoleNum - oldHoleNum; j++) {
                     EditText holeScore = new EditText(this);
                     holeScore.setWidth(pixelsH);
@@ -66,26 +69,24 @@ public class ChangeHoles extends AppCompatActivity {
                         }
                     });
 
-                    Scorecard.scoreList.add((oldHoleNum + j * (i+1)) + (newHoleNum-oldHoleNum * i), holeScore);
+                    Scorecard.scoreList[i][j + oldHoleNum] = holeScore;
                 }
             }
         }
-
+        setTotals();
         startActivity(new Intent(ChangeHoles.this, Scorecard.class));
     }
 
     public void setTotals(){
-        int x = 0;
-        int j = 0;
+
         for(int i = 0; i < MainActivity.numPlayers; i++){
             int total = 0;
-            for(j = x; j < Scorecard.numHoles + x; j++){
-                String currentScore = Scorecard.scoreList.get(j).getText().toString();
+            for(int j = 0; j < Scorecard.numHoles; j++){
+                String currentScore = Scorecard.scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);
                 }
             }
-            x = j;
             Scorecard.totalList.get(i).setText(Integer.toString(total));
         }
     }
