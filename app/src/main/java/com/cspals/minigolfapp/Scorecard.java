@@ -46,8 +46,8 @@ public class Scorecard extends AppCompatActivity {
     public static boolean revisit = false;
     public static int numHoles = 18;
 
-    boolean playersNamed = MainActivity.playersNamed;
-    int numPlayers = MainActivity.numPlayers;
+    boolean playersNamed = ScorecardSetup.namePlayers;
+    int numPlayers = ScorecardSetup.numPlayers;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -171,8 +171,6 @@ public class Scorecard extends AppCompatActivity {
         }
         tableHoles.addView(hRow);
 
-        int position = 0;
-
         for (int i = 0; i < numPlayers; i++) {
             TableRow tRow = new TableRow(this);
             tRow.addView(totalList.get(i));
@@ -210,6 +208,7 @@ public class Scorecard extends AppCompatActivity {
     }
 
     public void init() {
+        numHoles = ScorecardSetup.numHoles;
         TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);
         TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);

@@ -188,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
         Scorecard.scoreList = new EditText[10][18];
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
-        showEnterPlayersDialog(v);
-        //startActivity(new Intent(MainActivity.this, Scorecard.class));
+        //showEnterPlayersDialog(v);
+        startActivity(new Intent(MainActivity.this, ScorecardSetup.class));
     }
 
     public void savedClick(View v){
