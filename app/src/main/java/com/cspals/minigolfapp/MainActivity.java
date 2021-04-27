@@ -185,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startClick(View v){
-        Scorecard.scoreList = new EditText[10][18];
+        Scorecard.scoreList = new EditText[10][19];
+        Scorecard.handicap = false;
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
         //showEnterPlayersDialog(v);

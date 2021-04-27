@@ -91,7 +91,8 @@ public class Results extends AppCompatActivity {
     }
 
     public void returnClick(View v) {
-        Scorecard.scoreList = new EditText[10][18];
+        Scorecard.scoreList = new EditText[10][19];
+        Scorecard.handicap = false;
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();
         startActivity(new Intent(Results.this, MainActivity.class));

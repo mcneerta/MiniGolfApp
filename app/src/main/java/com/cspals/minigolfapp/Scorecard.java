@@ -39,12 +39,13 @@ public class Scorecard extends AppCompatActivity {
 
     public static List<TextView> totalList = new ArrayList<>();
 //    public static List<EditText> scoreList = new ArrayList<>();
-    public static EditText[][] scoreList = new EditText[10][18];
+    public static EditText[][] scoreList = new EditText[10][19];
     //public static List<TextView> nameList = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
     public static int numHoles = 18;
+    public static boolean handicap = false;
 
     boolean playersNamed = ScorecardSetup.namePlayers;
     int numPlayers = ScorecardSetup.numPlayers;
@@ -147,17 +148,23 @@ public class Scorecard extends AppCompatActivity {
         }
 
 
-        for(int i = 0; i < numPlayers; i++){
+        for(int i = 0; i < numPlayers; i++) {
             for (int j = 0; j < numHoles; j++) {
-                if(scoreList[i][j].getParent() != null) {
+                if (scoreList[i][j].getParent() != null) {
                     ((TableRow) scoreList[i][j].getParent()).removeView(scoreList[i][j]);
                 }
-//                ((TableRow) scoreList.get(i).getParent()).removeView(scoreList.get
+            }
+            if (handicap){
+                if (scoreList[i][18].getParent() != null) {
+                    ((TableRow) scoreList[i][18].getParent()).removeView(scoreList[i][18]);
+
+                }
             }
         }
 
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
+
         for(int i = 0; i < numHoles; i++) {
             TextView holeNumber = new TextView(this);
             holeNumber.setWidth(pixelsH);
@@ -166,6 +173,16 @@ public class Scorecard extends AppCompatActivity {
             holeNumber.setText(Integer.toString(i + 1));
             holeList.add(holeNumber);
         }
+
+        if(handicap){
+            TextView holeNumber = new TextView(this);
+            holeNumber.setWidth(pixelsH);
+            holeNumber.setTextSize(18);
+            holeNumber.setGravity(Gravity.CENTER);
+            holeNumber.setText("HC");
+            holeList.add(holeNumber);
+        }
+
         for (TextView hole : holeList){
             hRow.addView(hole);
         }
@@ -196,11 +213,13 @@ public class Scorecard extends AppCompatActivity {
 
 
             TableRow sRow = new TableRow(this);
-            sRow.setGravity(Gravity.LEFT);
+            sRow.setGravity(Gravity.START);
             for (int j = 0; j < numHoles; j++) {
                 sRow.addView(scoreList[i][j]);
             }
-//            position += numHoles;
+            if(handicap){
+                sRow.addView(scoreList[i][18]);
+            }
 
             tableScore.addView(sRow);
         }
@@ -313,6 +332,12 @@ public class Scorecard extends AppCompatActivity {
                 String currentScore = scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);
+                }
+            }
+            if(handicap) {
+                String handicapScore = scoreList[i][18].getText().toString();
+                if (!handicapScore.isEmpty()) {
+                    total += Integer.parseInt(handicapScore);
                 }
             }
             totalList.get(i).setText(Integer.toString(total));
