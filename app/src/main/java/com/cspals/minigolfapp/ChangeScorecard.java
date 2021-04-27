@@ -54,6 +54,7 @@ public class ChangeScorecard extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+        setTotals();
         Scorecard.revisit = true;
         startActivity(new Intent(ChangeScorecard.this, Scorecard.class));
     }
