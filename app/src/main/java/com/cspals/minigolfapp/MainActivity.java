@@ -18,7 +18,7 @@ import android.text.format.Time;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean playersNamed = false;
-    public static int numPlayers = 1;
+//    public static int numPlayers = ScorecardSetup.numPlayers;
 //  public static final String FILE_NAME = "games.txt";
     public static GameSave[] games;
     public static int gameIndex = 0;
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(playersStr.length() > 0 && playersStr.length() < 3) {
                     if(Integer.parseInt(playersStr) > 0 && Integer.parseInt(playersStr) <= 10) {
-                        numPlayers = Integer.parseInt(players.getText().toString());
+//                        numPlayers = Integer.parseInt(players.getText().toString());
                         showNamePlayersDialog(v);
                     }
                     else if(Integer.parseInt(playersStr) > 10){

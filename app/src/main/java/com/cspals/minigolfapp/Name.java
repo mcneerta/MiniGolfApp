@@ -25,7 +25,7 @@ import java.util.List;
 public class Name extends AppCompatActivity {
 
     public static List<EditText> nameEdits = new ArrayList<>();
-    int playerNum = MainActivity.numPlayers;
+    int playerNum = ScorecardSetup.numPlayers;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)

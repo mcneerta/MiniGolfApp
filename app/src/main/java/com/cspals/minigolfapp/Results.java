@@ -65,12 +65,12 @@ public class Results extends AppCompatActivity {
 
         for (int i = 0; i < Scorecard.totalList.size(); i++) {
             String playerName = Scorecard.nameStrings.get(i);
-            Integer playerScore = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
+            int playerScore = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
             sortedResultsList.add(new PlayerResult(playerName, playerScore));
         }
         Collections.sort(sortedResultsList);
 
-        for (int i = 0; i < MainActivity.numPlayers; i++) {
+        for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
             TextView name = new TextView(this);
             name.setHeight(136);
             String input = (i + 1) + ".   " + sortedResultsList.get(i).getPlayerName();
