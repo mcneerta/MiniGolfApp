@@ -53,6 +53,7 @@
         android:layout_width="273dp"
         android:layout_height="73dp"
         android:fontFamily="@font/asap_bold"
+        android:onClick="addParClick"
         android:text="@string/add_remove_par"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

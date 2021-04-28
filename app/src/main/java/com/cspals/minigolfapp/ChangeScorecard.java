@@ -33,7 +33,7 @@ public class ChangeScorecard extends AppCompatActivity {
 
 
     public void addParClick(View v){
-
+        startActivity(new Intent(ChangeScorecard.this, ChangePar.class));
     }
 
     public void addHandicapClick(View v){

@@ -9,7 +9,7 @@
     <string name="save_game">Save Game</string>
     <string name="help">Help</string>
     <string name="add_remove_players">Add/Remove Players</string>
-    <string name="change_holes">Change Holes</string>
+    <string name="change_holes">Add/Remove Holes</string>
     <string name="add_remove_handicap">Add/Remove Handicap</string>
     <string name="add_remove_par">Add/Remove Par</string>
     <string name="text_help">1. Select each box to input a score

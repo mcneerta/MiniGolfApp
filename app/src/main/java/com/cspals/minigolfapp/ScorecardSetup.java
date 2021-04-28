@@ -17,9 +17,9 @@ public class ScorecardSetup extends AppCompatActivity {
     public static int numHoles;
     public static int numPlayers;
     public static boolean namePlayers;
-    EditText editPlayers;// = findViewById(R.id.playersEdit);
-    EditText editHoles;// = findViewById(R.id.holesEdit);
-    CheckBox nameCheck;// = findViewById(R.id.checkBox);
+    EditText editPlayers;
+    EditText editHoles;
+    CheckBox nameCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
-        <activity android:name=".ScorecardSetup"></activity>
+        <activity android:name=".ChangePar"></activity>
+        <activity android:name=".ScorecardSetup" />
         <activity android:name=".ChangeHoles" />
         <activity
             android:name=".AddRemovePlayers"
