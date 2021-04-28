@@ -31,4 +31,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/SavedGame1"
+        android:layout_width="325dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="240dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </Button>
+
+    <Button
+        android:id="@+id/SavedGame2"
+        android:layout_width="325dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="320dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </Button>
+
+    <Button
+        android:id="@+id/SavedGame3"
+        android:layout_width="325dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </Button>
+
+    <Button
+        android:id="@+id/SavedGame4"
+        android:layout_width="325dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="480dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </Button>
+
+    <Button
+        android:id="@+id/SavedGame5"
+        android:layout_width="325dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="560dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </Button>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
