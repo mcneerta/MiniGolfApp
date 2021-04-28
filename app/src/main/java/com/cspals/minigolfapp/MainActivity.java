@@ -18,7 +18,7 @@ import android.text.format.Time;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean playersNamed = false;
-//    public static int numPlayers = ScorecardSetup.numPlayers;
+    public static int numPlayers = ScorecardSetup.numPlayers;
 //  public static final String FILE_NAME = "games.txt";
     public static GameSave[] games;
     public static int gameIndex = 0;
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public void showEnterPlayersDialog(View v) {
 
         // setup the alert builder
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(playersStr.length() > 0 && playersStr.length() < 3) {
                     if(Integer.parseInt(playersStr) > 0 && Integer.parseInt(playersStr) <= 10) {
-//                        numPlayers = Integer.parseInt(players.getText().toString());
+                        numPlayers = Integer.parseInt(players.getText().toString());
                         showNamePlayersDialog(v);
                     }
                     else if(Integer.parseInt(playersStr) > 10){
