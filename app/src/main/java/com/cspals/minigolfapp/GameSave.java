@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSave {
-    public static List<TextView> totalList;
+    public static ArrayList<TextView> totalList;
     public static EditText[][] scoreList;
     //public static List<TextView> nameList;
-    public static List<String> nameStrings;
+    public static ArrayList<String> nameStrings;
     public boolean playersNamed;
     public int players;
     public int holes;
     Time gameDate = new Time();
 
-    public GameSave(List<TextView> totalList, EditText[][] scoreList, /*List<TextView> nameList,*/ List<String> nameStrings, boolean playersNamed, int players, int holes){
+    public GameSave(ArrayList<TextView> totalList, EditText[][] scoreList, /*List<TextView> nameList,*/ ArrayList<String> nameStrings, boolean playersNamed, int players, int holes){
         this.totalList = new ArrayList<>(totalList);
         //this.nameList = nameList;
         this.nameStrings = new ArrayList<>(nameStrings);

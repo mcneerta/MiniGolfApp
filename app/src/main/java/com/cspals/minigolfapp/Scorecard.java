@@ -36,9 +36,9 @@ import java.util.List;
 
 public class Scorecard extends AppCompatActivity {
 
-    public static List<TextView> totalList = new ArrayList<>();
+    public static ArrayList<TextView> totalList = new ArrayList<>();
     public static EditText[][] scoreList = new EditText[10][19];
-    public static List<String> nameStrings = new ArrayList<>();
+    public static ArrayList<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
     public static boolean handicap = false;
@@ -328,8 +328,8 @@ public class Scorecard extends AppCompatActivity {
             tableScore.addView(sRow);
         }
 
-        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
-        MainActivity.games[MainActivity.gameIndex] = currentGame;
+//        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
+//        MainActivity.games[MainActivity.gameIndex] = currentGame;
 
     }
 

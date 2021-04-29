@@ -24,14 +24,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddRemovePlayers extends AppCompatActivity {
 
-    private List<String> pageNameStrings = Scorecard.nameStrings;
-    private EditText[][] pageScoreList = Scorecard.scoreList;
-    private List<TextView> pageTotalList = Scorecard.totalList;
+    private ArrayList<String> pageNameStrings;
+    private EditText[][] pageScoreList;
+    private ArrayList<TextView> pageTotalList;
     private int pageNumPlayers = ScorecardSetup.numPlayers;
 
 
@@ -40,16 +42,18 @@ public class AddRemovePlayers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_remove_players);
 
-        Scorecard.revisit = true;
+        pageNameStrings = deepCopyStr(Scorecard.nameStrings);
+        pageScoreList = deepCopyEditText(Scorecard.scoreList);
+        pageTotalList = deepCopyText(Scorecard.totalList);
         init();
     }
 
     public void init() {
         int white = getResources().getColor(android.R.color.white);
-
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 40);
+
 
         TableLayout addRemovePlayers = findViewById(R.id.addRemovePlayersTable);
         addRemovePlayers.removeAllViews();
@@ -81,7 +85,7 @@ public class AddRemovePlayers extends AppCompatActivity {
             playerName.setWidth(4 * pixelsH);
             playerName.setHeight(pixelsV);
             playerName.setGravity(Gravity.CENTER);
-            playerName.setHint(Scorecard.nameStrings.get(i));
+            playerName.setHint(pageNameStrings.get(i));
             playerName.addTextChangedListener(new TextWatcher() {
 
                 @Override
@@ -144,6 +148,10 @@ public class AddRemovePlayers extends AppCompatActivity {
 
     public void removeButtonClick(View v){
 
+        float density = this.getResources().getDisplayMetrics().density;
+        int pixelsV = (int) (density * 42);
+        int pixelsH = (int) (density * 40);
+
         if(pageNameStrings.size() > 1) {
 
             TableRow tRow = (TableRow) v.getParent();
@@ -175,12 +183,13 @@ public class AddRemovePlayers extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+
     }
 
     public void addButtonClick(View v){
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsV = (int) (density * 42);
-        int pixelsH = (int) (density * 46.667);
+        int pixelsH = (int) (density * 40);
 
         TableRow tRow = (TableRow) v.getParent();
         TableLayout tLayout = (TableLayout) tRow.getParent();
@@ -271,8 +280,17 @@ public class AddRemovePlayers extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-
     }
+
+//    @Override
+//    public void onBackPressed(){
+//        ScorecardSetup.numPlayers = pageNumPlayers;
+//        Scorecard.nameStrings = pageNameStrings;
+//        Scorecard.scoreList = pageScoreList;
+//        Scorecard.totalList = pageTotalList;
+//        Scorecard.revisit = true;
+//        startActivity(new Intent(AddRemovePlayers.this, Scorecard.class));
+//    }
 
     public void buttonClick(View v){
         ScorecardSetup.numPlayers = pageNumPlayers;
@@ -301,5 +319,76 @@ public class AddRemovePlayers extends AppCompatActivity {
             }
             Scorecard.totalList.get(i).setText(Integer.toString(total));
         }
+    }
+
+    private ArrayList<String> deepCopyStr(ArrayList<String> inputList) {
+        ArrayList<String> newList = new ArrayList<String>();
+        for(int i = 0; i < inputList.size(); i++){
+            newList.add(String.valueOf(inputList.get(i)));
+        }
+        return newList;
+    }
+
+    private ArrayList<TextView> deepCopyText(ArrayList<TextView> inputList) {
+        float density = this.getResources().getDisplayMetrics().density;
+        int pixelsV = (int) (density * 42);
+        int pixelsH = (int) (density * 40);
+
+        ArrayList<TextView> newList = new ArrayList<TextView>();
+        for(int i = 0; i < inputList.size(); i++){
+            TextView total = new TextView(this);
+            total.setHeight(pixelsV);
+            total.setWidth((int) (density * 75));
+            total.setGravity(Gravity.CENTER);
+            total.setText(String.valueOf(inputList.get(i).getText().toString()));
+            total.setTextSize(18);
+
+            newList.add(total);
+        }
+        return newList;
+    }
+
+    private EditText[][] deepCopyEditText(EditText[][] inputList) {
+        float density = this.getResources().getDisplayMetrics().density;
+        int pixelsV = (int) (density * 42);
+        int pixelsH = (int) (density * 40);
+
+        EditText[][] newList = new EditText[10][19];
+        for(int i = 0; i < inputList.length; i++){
+            for(int j = 0; j < inputList[0].length; j++) {
+                EditText holeScore = new EditText(this);
+                holeScore.setWidth(pixelsH);
+                holeScore.setBackgroundResource(R.drawable.grid_border);
+
+                if(inputList[i][j] != null) {
+                    holeScore.setText(String.valueOf(inputList[i][j].getText().toString()));
+                }
+
+                holeScore.setGravity(Gravity.CENTER);
+                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+                holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
+
+                holeScore.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        setTotals();
+                    }
+                });
+
+                newList[i][j] = holeScore;
+            }
+        }
+
+        return newList;
     }
 }
