@@ -69,7 +69,6 @@ public class AddRemovePlayers extends AppCompatActivity {
         addPlayer.addView(add);
         addPlayer.addView(addPlayerName);
         addRemovePlayers.addView(addPlayer);
-        String hello;
 
     }
 

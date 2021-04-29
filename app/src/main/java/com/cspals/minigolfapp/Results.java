@@ -56,12 +56,10 @@ public class Results extends AppCompatActivity {
     }
 
     public void init(){
+        int playerTie = 0;
         TextView winner = (TextView) findViewById(R.id.winner);
         LinearLayout left = findViewById(R.id.LinearLayout1);
         LinearLayout right = findViewById(R.id.LinearLayout2);
-
-        String winnerMessage = "The winner is " + Scorecard.winnerName + "!";
-        winner.setText(winnerMessage);
 
         for (int i = 0; i < Scorecard.totalList.size(); i++) {
             String playerName = Scorecard.nameStrings.get(i);
@@ -69,6 +67,23 @@ public class Results extends AppCompatActivity {
             sortedResultsList.add(new PlayerResult(playerName, playerScore));
         }
         Collections.sort(sortedResultsList);
+
+        for (int i = 0; i < sortedResultsList.size(); i++) {
+            for (int j = i + 1; j < sortedResultsList.size(); j++) {
+                if (i == 0 && sortedResultsList.get(i).getPlayerScore().equals(sortedResultsList.get(j).getPlayerScore())) {
+                    playerTie += 1;
+                }
+            }
+        }
+
+        String winnerMessage;
+        if (playerTie > 0) {
+            winnerMessage = "There is a tie!";
+        }
+        else {
+            winnerMessage = "The winner is " + Scorecard.winnerName + "!";
+        }
+        winner.setText(winnerMessage);
 
         for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
             TextView name = new TextView(this);
