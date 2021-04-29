@@ -129,9 +129,6 @@ public class Scorecard extends AppCompatActivity {
     @Override
     protected void onStop(){
         SaveHelper.save(this, MainActivity.games);
-        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings, playersNamed, numPlayers, numHoles);
-        MainActivity.games[MainActivity.gameIndex] = currentGame;
-
         super.onStop();
     }
 
@@ -229,8 +226,6 @@ public class Scorecard extends AppCompatActivity {
     }
 
     public void init() {
-        numPlayers = ScorecardSetup.numPlayers;
-        playersNamed = ScorecardSetup.namePlayers;
         numHoles = ScorecardSetup.numHoles;
         TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);
         TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
@@ -321,7 +316,7 @@ public class Scorecard extends AppCompatActivity {
             tableScore.addView(sRow);
         }
 
-        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings, playersNamed, numPlayers, numHoles);
+        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
         MainActivity.games[MainActivity.gameIndex] = currentGame;
 
     }

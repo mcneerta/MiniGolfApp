@@ -40,6 +40,14 @@ public class ChangeHoles extends AppCompatActivity {
             toast.show();
         }
 
+        else if(Integer.parseInt(newHoleNumText.getText().toString()) < 1){
+            Context context = getApplicationContext();
+            CharSequence text = "There is a minimum of 1 hole";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
         else {
             Scorecard.revisit = true;
             float density = this.getResources().getDisplayMetrics().density;
