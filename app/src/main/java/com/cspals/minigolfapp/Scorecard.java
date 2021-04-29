@@ -14,7 +14,6 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -38,17 +37,11 @@ import java.util.List;
 public class Scorecard extends AppCompatActivity {
 
     public static List<TextView> totalList = new ArrayList<>();
-    //public static List<EditText> scoreList = new ArrayList<>();
     public static EditText[][] scoreList = new EditText[10][19];
-    //public static List<TextView> nameList = new ArrayList<>();
     public static List<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
-    public static int numHoles = 18;
-    public static int numPlayers;
     public static boolean handicap = false;
-    public static boolean playersNamed;
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -118,6 +111,14 @@ public class Scorecard extends AppCompatActivity {
         namesV.setVerticalFadingEdgeEnabled(true);
         totalsV.setVerticalFadingEdgeEnabled(true);
 
+        boolean playersNamed = ScorecardSetup.playersNamed;
+        if(!playersNamed) {
+            for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
+                Scorecard.nameStrings.add("Player " + (i + 1));
+            }
+            ScorecardSetup.playersNamed = true;
+        }
+
         if(revisit){
             returnInit();
         }
@@ -138,12 +139,18 @@ public class Scorecard extends AppCompatActivity {
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
         TableLayout tableTotals = (TableLayout) findViewById(R.id.table_totals);
 
+        int numHoles = ScorecardSetup.numHoles;
+        int numPlayers = ScorecardSetup.numPlayers;
+
+
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 46.667);
 
         for(int i = 0; i < numPlayers; i++){
-            ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
+            if(totalList.get(i).getParent() != null) {
+                ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
+            }
         }
 
 
@@ -196,12 +203,13 @@ public class Scorecard extends AppCompatActivity {
             String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
-            if (playersNamed) {
-                playerName = nameStrings.get(i);
-            }
-            else {
-                playerName = "Player " + (i + 1);
-            }
+//            if (playersNamed) {
+//                playerName = nameStrings.get(i);
+//            }
+//            else {
+//                playerName = "Player " + (i + 1);
+//            }
+            playerName = nameStrings.get(i);
             name.setText(playerName);
             name.setTextSize(18);
             name.setWidth((int) (density * 75));
@@ -226,7 +234,10 @@ public class Scorecard extends AppCompatActivity {
     }
 
     public void init() {
-        numHoles = ScorecardSetup.numHoles;
+        int numPlayers = ScorecardSetup.numPlayers;
+        boolean playersNamed = ScorecardSetup.playersNamed;
+        int numHoles = ScorecardSetup.numHoles;
+
         TableLayout tableHoles = (TableLayout) findViewById(R.id.hole_numbers);
         TableLayout tableScore = (TableLayout) findViewById(R.id.table_score);
         TableLayout tableName = (TableLayout) findViewById(R.id.table_names);
@@ -254,12 +265,13 @@ public class Scorecard extends AppCompatActivity {
             String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
-            if (playersNamed) {
-                playerName = nameStrings.get(i);
-            } else {
-                playerName = "Player " + (i+1);
-                nameStrings.add(playerName);
-            }
+//            if (playersNamed) {
+//                playerName = nameStrings.get(i);
+//            } else {
+//                playerName = "Player " + (i+1);
+//                nameStrings.add(playerName);
+//            }
+            playerName = nameStrings.get(i);
             name.setText(playerName);
             name.setTextSize(18);
             name.setWidth((int) (density * 75));
@@ -325,9 +337,9 @@ public class Scorecard extends AppCompatActivity {
 
     public void setTotals(){
 
-        for(int i = 0; i < numPlayers; i++){
+        for(int i = 0; i < ScorecardSetup.numPlayers; i++){
             int total = 0;
-            for(int j = 0; j < numHoles; j++){
+            for(int j = 0; j < ScorecardSetup.numHoles; j++){
                 String currentScore = scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);

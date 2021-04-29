@@ -192,7 +192,7 @@ public class AddRemovePlayers extends AppCompatActivity {
         if(!(addNameString.equals(""))){
             pageNameStrings.add(addNameString);
 
-            for (int j = 0; j < Scorecard.numHoles; j++) {
+            for (int j = 0; j < ScorecardSetup.numHoles; j++) {
                 EditText holeScore = new EditText(this);
                 holeScore.setWidth(pixelsH);
                 holeScore.setBackgroundResource(R.drawable.grid_border);
@@ -287,7 +287,7 @@ public class AddRemovePlayers extends AppCompatActivity {
 
         for(int i = 0; i < ScorecardSetup.numPlayers; i++){
             int total = 0;
-            for(int j = 0; j < Scorecard.numHoles; j++){
+            for(int j = 0; j < ScorecardSetup.numHoles; j++){
                 String currentScore = Scorecard.scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);

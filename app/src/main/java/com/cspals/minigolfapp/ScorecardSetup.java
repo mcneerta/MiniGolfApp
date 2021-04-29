@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -16,7 +14,7 @@ import android.widget.Toast;
 public class ScorecardSetup extends AppCompatActivity {
     public static int numHoles;
     public static int numPlayers;
-    public static boolean namePlayers;
+    public static boolean playersNamed;
     EditText editPlayers;
     EditText editHoles;
     CheckBox nameCheck;
@@ -88,12 +86,12 @@ public class ScorecardSetup extends AppCompatActivity {
         if(validateInput()){
             numHoles = Integer.parseInt(editHoles.getText().toString());
             numPlayers = Integer.parseInt(editPlayers.getText().toString());
-            namePlayers = nameCheck.isChecked();
+            playersNamed = nameCheck.isChecked();
             System.out.println("Number of Holes: " + numHoles);
             System.out.println("Number of Players: " + numPlayers);
-            System.out.println("Name Players: " + namePlayers);
+            System.out.println("Name Players: " + playersNamed);
 
-            if(namePlayers) {
+            if(playersNamed) {
                 startActivity(new Intent(ScorecardSetup.this, Name.class));
             }
             else{

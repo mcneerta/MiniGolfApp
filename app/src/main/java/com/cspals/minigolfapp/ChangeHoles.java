@@ -53,11 +53,11 @@ public class ChangeHoles extends AppCompatActivity {
             float density = this.getResources().getDisplayMetrics().density;
             int pixelsV = (int) (density * 42);
             int pixelsH = (int) (density * 46.667);
-            int oldHoleNum = Scorecard.numHoles;
+            int oldHoleNum = ScorecardSetup.numHoles;
 
 
-            Scorecard.numHoles = Integer.parseInt(newHoleNumText.getText().toString());
-            int newHoleNum = Scorecard.numHoles;
+            ScorecardSetup.numHoles = Integer.parseInt(newHoleNumText.getText().toString());
+            int newHoleNum = ScorecardSetup.numHoles;
 
             // account for new Hole Num is larger
             if (oldHoleNum < newHoleNum) {
@@ -103,7 +103,7 @@ public class ChangeHoles extends AppCompatActivity {
 
         for(int i = 0; i < ScorecardSetup.numPlayers; i++){
             int total = 0;
-            for(int j = 0; j < Scorecard.numHoles; j++){
+            for(int j = 0; j < ScorecardSetup.numHoles; j++){
                 String currentScore = Scorecard.scoreList[i][j].getText().toString();
                 if (!currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);

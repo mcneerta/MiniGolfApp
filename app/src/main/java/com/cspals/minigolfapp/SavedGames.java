@@ -62,9 +62,9 @@ public class SavedGames extends AppCompatActivity {
                 Scorecard.scoreList[i] = saves[game].scoreList[i].clone();
             }
             Scorecard.totalList = saves[game].totalList;
-            Scorecard.playersNamed = saves[game].playersNamed;
-            Scorecard.numPlayers = saves[game].players;
-            Scorecard.numHoles = saves[game].holes;
+            ScorecardSetup.playersNamed = saves[game].playersNamed;
+            ScorecardSetup.numPlayers = saves[game].players;
+            ScorecardSetup.numHoles = saves[game].holes;
             Scorecard.revisit = true;
             startActivity(new Intent(SavedGames.this, Scorecard.class));
         }
