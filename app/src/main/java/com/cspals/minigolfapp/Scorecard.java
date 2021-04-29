@@ -144,7 +144,9 @@ public class Scorecard extends AppCompatActivity {
         int pixelsH = (int) (density * 46.667);
 
         for(int i = 0; i < numPlayers; i++){
-            ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
+            if(totalList.get(i).getParent() != null) {
+                ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
+            }
         }
 
 
@@ -317,8 +319,8 @@ public class Scorecard extends AppCompatActivity {
             tableScore.addView(sRow);
         }
 
-        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings, numPlayers, numHoles, this);
-        MainActivity.games[MainActivity.gameIndex] = currentGame;
+//        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings, numPlayers, numHoles, this);
+//        MainActivity.games[MainActivity.gameIndex] = currentGame;
 
     }
 
@@ -326,7 +328,7 @@ public class Scorecard extends AppCompatActivity {
 
     public void setTotals(){
 
-        for(int i = 0; i < numPlayers; i++){
+        for(int i = 0; i < ScorecardSetup.numPlayers; i++){
             int total = 0;
             for(int j = 0; j < numHoles; j++){
                 String currentScore = scoreList[i][j].getText().toString();
