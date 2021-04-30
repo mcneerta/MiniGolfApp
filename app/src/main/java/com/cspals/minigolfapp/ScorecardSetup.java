@@ -88,7 +88,6 @@ public class ScorecardSetup extends AppCompatActivity {
             editHoles.getText().clear();
             return false;
         }
-
         return true;
     }
 
