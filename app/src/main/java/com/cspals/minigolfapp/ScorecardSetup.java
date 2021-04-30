@@ -1,9 +1,15 @@
 package com.cspals.minigolfapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
@@ -19,6 +25,7 @@ public class ScorecardSetup extends AppCompatActivity {
     EditText editHoles;
     CheckBox nameCheck;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,12 @@ public class ScorecardSetup extends AppCompatActivity {
         editPlayers = findViewById(R.id.playersEdit);
         editHoles = findViewById(R.id.holesEdit);
         nameCheck = findViewById(R.id.checkBox);
+        int nightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        ColorStateList buttonColor = ColorStateList.valueOf(getResources().getColor(R.color.light_blue));
+        if (nightMode == Configuration.UI_MODE_NIGHT_YES){
+                buttonColor = ColorStateList.valueOf(getResources().getColor(R.color.main_purple));;
+        }
+        nameCheck.setButtonTintList(buttonColor);
 
         editPlayers.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
         editHoles.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });

@@ -203,7 +203,6 @@ public class AddRemovePlayers extends AppCompatActivity {
         }
     }
 
-
     public void buttonClick(View v){
         ScorecardSetup.numPlayers = pageNumPlayers;
         Scorecard.nameStrings = pageNameStrings;

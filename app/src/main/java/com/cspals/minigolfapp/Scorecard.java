@@ -343,8 +343,8 @@ public class Scorecard extends AppCompatActivity {
             tableScore.addView(sRow);
         }
 
-        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
-        MainActivity.games[MainActivity.gameIndex] = currentGame;
+//        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
+//        MainActivity.games[MainActivity.gameIndex] = currentGame;
 
     }
 
