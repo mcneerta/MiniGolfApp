@@ -36,12 +36,13 @@ import java.util.List;
 
 public class Scorecard extends AppCompatActivity {
 
-    public static ArrayList<TextView> totalList = new ArrayList<>();
-    public static EditText[][] scoreList = new EditText[10][19];
+    public static ArrayList<String> totalList = new ArrayList<>();
+    public static String[][] scoreList = new String[10][19];
     public static ArrayList<String> nameStrings = new ArrayList<>();
     public static String winnerName;
     public static boolean revisit = false;
     public static boolean handicap = false;
+    public static ArrayList<TextView> totalTextList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -147,26 +148,26 @@ public class Scorecard extends AppCompatActivity {
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 46.667);
 
-        for(int i = 0; i < numPlayers; i++){
-            if(totalList.get(i).getParent() != null) {
-                ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
-            }
-        }
+//        for(int i = 0; i < numPlayers; i++){
+//            if(totalList.get(i).getParent() != null) {
+//                ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
+//            }
+//        }
 
 
-        for(int i = 0; i < numPlayers; i++) {
-            for (int j = 0; j < numHoles; j++) {
-                if (scoreList[i][j].getParent() != null) {
-                    ((TableRow) scoreList[i][j].getParent()).removeView(scoreList[i][j]);
-                }
-            }
-            if (handicap){
-                if (scoreList[i][18].getParent() != null) {
-                    ((TableRow) scoreList[i][18].getParent()).removeView(scoreList[i][18]);
-
-                }
-            }
-        }
+//        for(int i = 0; i < numPlayers; i++) {
+//            for (int j = 0; j < numHoles; j++) {
+//                if (scoreList[i][j].getParent() != null) {
+//                    ((TableRow) scoreList[i][j].getParent()).removeView(scoreList[i][j]);
+//                }
+//            }
+//            if (handicap){
+//                if (scoreList[i][18].getParent() != null) {
+//                    ((TableRow) scoreList[i][18].getParent()).removeView(scoreList[i][18]);
+//
+//                }
+//            }
+//        }
 
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
@@ -196,19 +197,39 @@ public class Scorecard extends AppCompatActivity {
 
         for (int i = 0; i < numPlayers; i++) {
             TableRow tRow = new TableRow(this);
-            tRow.addView(totalList.get(i));
+
+            int currentPlayer = i;
+            TextView total = new TextView(this);
+            total.setHeight(pixelsV);
+            total.setWidth((int) (density * 75));
+            total.setGravity(Gravity.CENTER);
+            total.setText(totalList.get(i));
+            total.setTextSize(18);
+//            total.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//                    totalList.set(currentPlayer, total.getText().toString());
+//                }
+//            });
+
+            tRow.addView(total);
             tableTotals.addView(tRow);
 
             TextView name = new TextView(this);
             String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
-//            if (playersNamed) {
-//                playerName = nameStrings.get(i);
-//            }
-//            else {
-//                playerName = "Player " + (i + 1);
-//            }
+
             playerName = nameStrings.get(i);
             name.setText(playerName);
             name.setTextSize(18);
@@ -218,18 +239,74 @@ public class Scorecard extends AppCompatActivity {
             nRow.addView(name);
             tableName.addView(nRow);
 
-
             TableRow sRow = new TableRow(this);
             sRow.setGravity(Gravity.START);
+
             for (int j = 0; j < numHoles; j++) {
-                sRow.addView(scoreList[i][j]);
+                int player = i;
+                int hole = j;
+                EditText holeScore = new EditText(this);
+                holeScore.setWidth(pixelsH);
+                holeScore.setBackgroundResource(R.drawable.grid_border);
+                holeScore.setText(scoreList[i][j]);
+                holeScore.setGravity(Gravity.CENTER);
+                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+                holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
+
+                holeScore.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        scoreList[player][hole] = holeScore.getText().toString();
+                        setTotals();
+                    }
+                });
+
+                sRow.addView(holeScore);
             }
             if(handicap){
-                sRow.addView(scoreList[i][18]);
+                int player = i;
+                EditText holeScore = new EditText(this);
+                holeScore.setWidth(pixelsH);
+                holeScore.setBackgroundResource(R.drawable.grid_border);
+                holeScore.setText(scoreList[i][18]);
+                holeScore.setGravity(Gravity.CENTER);
+                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
+                holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
+
+                holeScore.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        scoreList[player][18] = holeScore.getText().toString();
+                        setTotals();
+                    }
+                });
+
+                sRow.addView(holeScore);
             }
 
             tableScore.addView(sRow);
         }
+        setTotals();
         revisit = false;
     }
 
@@ -265,17 +342,12 @@ public class Scorecard extends AppCompatActivity {
             String playerName;
             name.setHeight(pixelsV);
             name.setGravity(Gravity.CENTER);
-//            if (playersNamed) {
-//                playerName = nameStrings.get(i);
-//            } else {
-//                playerName = "Player " + (i+1);
-//                nameStrings.add(playerName);
-//            }
+
+            int currentPlayer = i;
             playerName = nameStrings.get(i);
             name.setText(playerName);
             name.setTextSize(18);
             name.setWidth((int) (density * 75));
-            //nameList.add(name);
 
             nRow.addView(name);
             tableName.addView(nRow);
@@ -289,13 +361,31 @@ public class Scorecard extends AppCompatActivity {
             //String totalScore = 0;
             total.setText("0");
             total.setTextSize(18);
-            totalList.add(total);
+//            total.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//                    totalList.set(currentPlayer, total.getText().toString());
+//                }
+//            });
+            totalList.add("0");
             tRow.addView(total);
             tableTotals.addView(tRow);
 
             TableRow sRow = new TableRow(this);
             sRow.setGravity(Gravity.LEFT);
             for (int j = 0; j < numHoles; j++) {
+                int player = i;
+                int hole = j;
                 EditText holeScore = new EditText(this);
                 holeScore.setWidth(pixelsH);
                 holeScore.setBackgroundResource(R.drawable.grid_border);
@@ -317,42 +407,68 @@ public class Scorecard extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
+                        scoreList[player][hole] = holeScore.getText().toString();
                         setTotals();
                     }
                 });
 
-                scoreList[i][j] = holeScore;
                 sRow.addView(holeScore);
             }
 
             tableScore.addView(sRow);
         }
 
-//        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
-//        MainActivity.games[MainActivity.gameIndex] = currentGame;
+        GameSave currentGame = new GameSave(totalList, scoreList, nameStrings,playersNamed, numPlayers, numHoles);
+        MainActivity.games[MainActivity.gameIndex] = currentGame;
 
     }
 
 
-
     public void setTotals(){
 
+        TableLayout tTable =  findViewById(R.id.table_totals);
+
         for(int i = 0; i < ScorecardSetup.numPlayers; i++){
+            TableRow tRow = (TableRow) tTable.getChildAt(i);
+            TextView tText = (TextView) tRow.getChildAt(0);
             int total = 0;
             for(int j = 0; j < ScorecardSetup.numHoles; j++){
-                String currentScore = scoreList[i][j].getText().toString();
-                if (!currentScore.isEmpty()) {
+                String currentScore = scoreList[i][j];
+                if (currentScore != null && !currentScore.isEmpty()) {
                     total += Integer.parseInt(currentScore);
                 }
             }
             if(handicap) {
-                String handicapScore = scoreList[i][18].getText().toString();
-                if (!handicapScore.isEmpty()) {
+                String handicapScore = scoreList[i][18];
+                if (handicapScore != null) {
                     total += Integer.parseInt(handicapScore);
                 }
             }
-            totalList.get(i).setText(Integer.toString(total));
+            totalList.set(i, Integer.toString(total));
+            tText.setText(Integer.toString(total));
         }
+    }
+
+    public static ArrayList<String> deepCopyStrList(ArrayList<String> inputList) {
+        ArrayList<String> newList = new ArrayList<>();
+        for(int i = 0; i < inputList.size(); i++){
+            if(inputList.get(i) != null) {
+                newList.add(String.valueOf(inputList.get(i)));
+            }
+        }
+        return newList;
+    }
+
+    public static String[][] deepCopyStr2DArr(String[][] inputList) {
+        String[][] newList = new String[10][19];
+        for(int i = 0; i < inputList.length; i++){
+            for(int j = 0; j < inputList[0].length; j++) {
+                if(inputList[i][j] != null) {
+                    newList[i][j] = String.valueOf(inputList[i][j]);
+                }
+            }
+        }
+        return newList;
     }
 
     public void showFinishGameAlertDialogButtonClicked(View view) {
@@ -394,7 +510,7 @@ public class Scorecard extends AppCompatActivity {
         List<Integer> totalIntList = new ArrayList<>();
         for (int i = 0; i < totalList.size(); i++) {
             totalIntList.add(
-                    Integer.parseInt(totalList.get(i).getText().toString()));
+                    Integer.parseInt(totalList.get(i)));
         }
         return totalIntList;
     }

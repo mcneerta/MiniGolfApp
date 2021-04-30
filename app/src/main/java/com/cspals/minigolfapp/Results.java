@@ -63,7 +63,7 @@ public class Results extends AppCompatActivity {
 
         for (int i = 0; i < Scorecard.totalList.size(); i++) {
             String playerName = Scorecard.nameStrings.get(i);
-            int playerScore = Integer.parseInt(Scorecard.totalList.get(i).getText().toString());
+            int playerScore = Integer.parseInt(Scorecard.totalList.get(i));
             sortedResultsList.add(new PlayerResult(playerName, playerScore));
         }
         Collections.sort(sortedResultsList);
@@ -106,7 +106,7 @@ public class Results extends AppCompatActivity {
     }
 
     public void returnClick(View v) {
-        Scorecard.scoreList = new EditText[10][19];
+        Scorecard.scoreList = new String[10][19];
         Scorecard.handicap = false;
         Scorecard.totalList.clear();
         Scorecard.nameStrings.clear();

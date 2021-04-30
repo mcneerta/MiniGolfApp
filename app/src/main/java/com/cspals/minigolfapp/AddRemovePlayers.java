@@ -11,7 +11,6 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -24,16 +23,13 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddRemovePlayers extends AppCompatActivity {
 
     private ArrayList<String> pageNameStrings;
-    private EditText[][] pageScoreList;
-    private ArrayList<TextView> pageTotalList;
+    private String[][] pageScoreList;
+    private ArrayList<String> pageTotalList;
     private int pageNumPlayers = ScorecardSetup.numPlayers;
 
 
@@ -42,9 +38,9 @@ public class AddRemovePlayers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_remove_players);
 
-        pageNameStrings = deepCopyStr(Scorecard.nameStrings);
-        pageScoreList = deepCopyEditText(Scorecard.scoreList);
-        pageTotalList = deepCopyText(Scorecard.totalList);
+        pageNameStrings = Scorecard.deepCopyStrList(Scorecard.nameStrings);
+        pageScoreList = Scorecard.deepCopyStr2DArr(Scorecard.scoreList);
+        pageTotalList = Scorecard.deepCopyStrList(Scorecard.totalList);
         init();
     }
 
@@ -53,7 +49,6 @@ public class AddRemovePlayers extends AppCompatActivity {
         float density = this.getResources().getDisplayMetrics().density;
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 40);
-
 
         TableLayout addRemovePlayers = findViewById(R.id.addRemovePlayersTable);
         addRemovePlayers.removeAllViews();
@@ -87,16 +82,12 @@ public class AddRemovePlayers extends AppCompatActivity {
             playerName.setGravity(Gravity.CENTER);
             playerName.setHint(pageNameStrings.get(i));
             playerName.addTextChangedListener(new TextWatcher() {
-
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
                 }
 
                 @Override
@@ -110,6 +101,7 @@ public class AddRemovePlayers extends AppCompatActivity {
             ColorStateList x = ColorStateList.valueOf(white);
             ViewCompat.setBackgroundTintList(playerName, x);
             playerName.setTextColor(white);
+            playerName.setHintTextColor(white);
 
             player.addView(remove);
             player.addView(playerName);
@@ -148,10 +140,6 @@ public class AddRemovePlayers extends AppCompatActivity {
 
     public void removeButtonClick(View v){
 
-        float density = this.getResources().getDisplayMetrics().density;
-        int pixelsV = (int) (density * 42);
-        int pixelsH = (int) (density * 40);
-
         if(pageNameStrings.size() > 1) {
 
             TableRow tRow = (TableRow) v.getParent();
@@ -170,7 +158,7 @@ public class AddRemovePlayers extends AppCompatActivity {
             for (int i = indexToRemove; i < pageScoreList.length - 1; i++) {
                 pageScoreList[i] = pageScoreList[i + 1];
             }
-            pageScoreList[pageScoreList.length - 1] = new EditText[pageScoreList[0].length];
+            pageScoreList[pageScoreList.length - 1] = new String[pageScoreList[0].length];
 
             pageNumPlayers--;
 
@@ -187,10 +175,6 @@ public class AddRemovePlayers extends AppCompatActivity {
     }
 
     public void addButtonClick(View v){
-        float density = this.getResources().getDisplayMetrics().density;
-        int pixelsV = (int) (density * 42);
-        int pixelsH = (int) (density * 40);
-
         TableRow tRow = (TableRow) v.getParent();
         TableLayout tLayout = (TableLayout) tRow.getParent();
         int indexToAdd = tLayout.indexOfChild(tRow);
@@ -200,97 +184,19 @@ public class AddRemovePlayers extends AppCompatActivity {
 
         if(!(addNameString.equals(""))){
             pageNameStrings.add(addNameString);
-
-            for (int j = 0; j < ScorecardSetup.numHoles; j++) {
-                EditText holeScore = new EditText(this);
-                holeScore.setWidth(pixelsH);
-                holeScore.setBackgroundResource(R.drawable.grid_border);
-
-                holeScore.setGravity(Gravity.CENTER);
-                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
-                holeScore.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
-
-                holeScore.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        setTotals();
-                    }
-                });
-
-
-                pageScoreList[indexToAdd][j] = holeScore;
-            }
-
-
-            if(Scorecard.handicap){
-                EditText holeScore = new EditText(this);
-                holeScore.setWidth(pixelsH);
-                holeScore.setBackgroundResource(R.drawable.grid_border);
-
-                holeScore.setGravity(Gravity.CENTER);
-                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
-                holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
-
-                holeScore.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        setTotals();
-                    }
-                });
-
-                Scorecard.scoreList[indexToAdd][18] = holeScore;
-            }
-
-            TextView total = new TextView(this);
-            total.setHeight(pixelsV);
-            total.setWidth((int) (density * 75));
-            total.setGravity(Gravity.CENTER);
-            total.setText("0");
-            total.setTextSize(18);
-            pageTotalList.add(total);
-
+            pageTotalList.add("0");
             pageNumPlayers++;
-
             init();
         }
         else{
-            Context context = getApplicationContext();
-            CharSequence text = "Name the new player";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            addNameString = "Player " + pageNameStrings.size();
+            pageNameStrings.add(addNameString);
+            pageTotalList.add("0");
+            pageNumPlayers++;
+            init();
         }
     }
 
-//    @Override
-//    public void onBackPressed(){
-//        ScorecardSetup.numPlayers = pageNumPlayers;
-//        Scorecard.nameStrings = pageNameStrings;
-//        Scorecard.scoreList = pageScoreList;
-//        Scorecard.totalList = pageTotalList;
-//        Scorecard.revisit = true;
-//        startActivity(new Intent(AddRemovePlayers.this, Scorecard.class));
-//    }
 
     public void buttonClick(View v){
         ScorecardSetup.numPlayers = pageNumPlayers;
@@ -299,96 +205,5 @@ public class AddRemovePlayers extends AppCompatActivity {
         Scorecard.totalList = pageTotalList;
         Scorecard.revisit = true;
         startActivity(new Intent(AddRemovePlayers.this, Scorecard.class));
-    }
-
-    public void setTotals(){
-
-        for(int i = 0; i < ScorecardSetup.numPlayers; i++){
-            int total = 0;
-            for(int j = 0; j < ScorecardSetup.numHoles; j++){
-                String currentScore = Scorecard.scoreList[i][j].getText().toString();
-                if (!currentScore.isEmpty()) {
-                    total += Integer.parseInt(currentScore);
-                }
-            }
-            if(Scorecard.handicap) {
-                String handicapScore = Scorecard.scoreList[i][18].getText().toString();
-                if (!handicapScore.isEmpty()) {
-                    total += Integer.parseInt(handicapScore);
-                }
-            }
-            Scorecard.totalList.get(i).setText(Integer.toString(total));
-        }
-    }
-
-    private ArrayList<String> deepCopyStr(ArrayList<String> inputList) {
-        ArrayList<String> newList = new ArrayList<String>();
-        for(int i = 0; i < inputList.size(); i++){
-            newList.add(String.valueOf(inputList.get(i)));
-        }
-        return newList;
-    }
-
-    private ArrayList<TextView> deepCopyText(ArrayList<TextView> inputList) {
-        float density = this.getResources().getDisplayMetrics().density;
-        int pixelsV = (int) (density * 42);
-        int pixelsH = (int) (density * 40);
-
-        ArrayList<TextView> newList = new ArrayList<TextView>();
-        for(int i = 0; i < inputList.size(); i++){
-            TextView total = new TextView(this);
-            total.setHeight(pixelsV);
-            total.setWidth((int) (density * 75));
-            total.setGravity(Gravity.CENTER);
-            total.setText(String.valueOf(inputList.get(i).getText().toString()));
-            total.setTextSize(18);
-
-            newList.add(total);
-        }
-        return newList;
-    }
-
-    private EditText[][] deepCopyEditText(EditText[][] inputList) {
-        float density = this.getResources().getDisplayMetrics().density;
-        int pixelsV = (int) (density * 42);
-        int pixelsH = (int) (density * 40);
-
-        EditText[][] newList = new EditText[10][19];
-        for(int i = 0; i < inputList.length; i++){
-            for(int j = 0; j < inputList[0].length; j++) {
-                EditText holeScore = new EditText(this);
-                holeScore.setWidth(pixelsH);
-                holeScore.setBackgroundResource(R.drawable.grid_border);
-
-                if(inputList[i][j] != null) {
-                    holeScore.setText(String.valueOf(inputList[i][j].getText().toString()));
-                }
-
-                holeScore.setGravity(Gravity.CENTER);
-                holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
-                holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
-
-                holeScore.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        setTotals();
-                    }
-                });
-
-                newList[i][j] = holeScore;
-            }
-        }
-
-        return newList;
     }
 }

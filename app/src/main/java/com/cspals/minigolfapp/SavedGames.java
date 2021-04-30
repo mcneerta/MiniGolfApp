@@ -5,12 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
 
 public class SavedGames extends AppCompatActivity {
 
@@ -56,12 +53,9 @@ public class SavedGames extends AppCompatActivity {
 
     public void ResumeGame(int game){
         if(saves[game] != null){
-            Scorecard.nameStrings = new ArrayList<>(saves[game].nameStrings);
-            Scorecard.scoreList = new EditText[saves[game].scoreList.length][];
-            for(int i = 0; i < saves[game].scoreList.length; i++){
-                Scorecard.scoreList[i] = saves[game].scoreList[i].clone();
-            }
-            Scorecard.totalList = saves[game].totalList;
+            Scorecard.nameStrings = Scorecard.deepCopyStrList(saves[game].nameStrings);
+            Scorecard.scoreList = Scorecard.deepCopyStr2DArr(saves[game].scoreList);
+            Scorecard.totalList = Scorecard.deepCopyStrList(saves[game].totalList);
             ScorecardSetup.playersNamed = saves[game].playersNamed;
             ScorecardSetup.numPlayers = saves[game].players;
             ScorecardSetup.numHoles = saves[game].holes;

@@ -21,12 +21,6 @@ public class ChangeHoles extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_holes);
-//        Scorecard.revisit = true;
-        init();
-    }
-
-    public void init(){
-
     }
 
     public void changeHolesClick(View v){
@@ -60,62 +54,18 @@ public class ChangeHoles extends AppCompatActivity {
             int newHoleNum = ScorecardSetup.numHoles;
 
             // account for new Hole Num is larger
-            if (oldHoleNum < newHoleNum) {
-                //int holesAd
-                for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
-
-                    for (int j = 0; j < newHoleNum - oldHoleNum; j++) {
-                        EditText holeScore = new EditText(this);
-                        holeScore.setWidth(pixelsH);
-                        holeScore.setBackgroundResource(R.drawable.grid_border);
-
-                        holeScore.setGravity(Gravity.CENTER);
-                        holeScore.setInputType(InputType.TYPE_CLASS_NUMBER);
-                        holeScore.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2)});
-
-                        holeScore.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                setTotals();
-                            }
-                        });
-
-                        Scorecard.scoreList[i][j + oldHoleNum] = holeScore;
-                    }
-                }
-            }
-            setTotals();
+//            if (oldHoleNum < newHoleNum) {
+//                //int holesAd
+//                for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
+//
+//                    for (int j = 0; j < newHoleNum - oldHoleNum; j++) {
+//                        Scorecard.scoreList[i][j + oldHoleNum] = "";
+//                    }
+//                }
+//            }
             startActivity(new Intent(ChangeHoles.this, Scorecard.class));
         }
     }
 
-    public void setTotals(){
 
-        for(int i = 0; i < ScorecardSetup.numPlayers; i++){
-            int total = 0;
-            for(int j = 0; j < ScorecardSetup.numHoles; j++){
-                String currentScore = Scorecard.scoreList[i][j].getText().toString();
-                if (!currentScore.isEmpty()) {
-                    total += Integer.parseInt(currentScore);
-                }
-            }
-            if(Scorecard.handicap) {
-                String handicapScore = Scorecard.scoreList[i][18].getText().toString();
-                if (!handicapScore.isEmpty()) {
-                    total += Integer.parseInt(handicapScore);
-                }
-            }
-            Scorecard.totalList.get(i).setText(Integer.toString(total));
-        }
-    }
 }

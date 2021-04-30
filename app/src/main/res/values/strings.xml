@@ -9,9 +9,12 @@
     <string name="save_game">Save Game</string>
     <string name="help">Help</string>
     <string name="add_remove_players">Add/Remove Players</string>
-    <string name="change_holes">Change # of Holes</string>
+    <string name="change_holes">Add/Remove Holes</string>
+    <string name="update">Update</string>
+    <string name="finish_game">Finish Game</string>
     <string name="add_remove_handicap">Add/Remove Handicap</string>
     <string name="add_remove_par">Add/Remove Par</string>
+    <string name="change_hole_number">Change the number of holes</string>
     <string name="text_help">1. Select each box to input a score
         \n\n2. The column indicates the hole number, while the row indicates the players. The total is displayed to the right
         \n\n3. To change the number of players, change the number of holes, add handicap, or add par, click on the gear icon Change Scorecard
