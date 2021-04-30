@@ -32,10 +32,20 @@ public class ScorecardSetup extends AppCompatActivity {
     }
 
     public boolean validateInput(){
-        int holesTemp = Integer.parseInt(editHoles.getText().toString());
-        int playerTemp = Integer.parseInt(editPlayers.getText().toString());
+        String holesString = editHoles.getText().toString();
+        String playerString = editPlayers.getText().toString();
+        int holesTemp = 0;
+        int playerTemp = 0;
 
-        if(playerTemp < 0) {
+        if(!holesString.isEmpty()) {
+            holesTemp = Integer.parseInt(holesString);
+        }
+
+        if(!playerString.isEmpty()) {
+            playerTemp = Integer.parseInt(playerString);
+        }
+
+        if(playerTemp < 1) {
             Context context = getApplicationContext();
             CharSequence text = "You need at least one player!";
             int duration = Toast.LENGTH_SHORT;
@@ -57,7 +67,7 @@ public class ScorecardSetup extends AppCompatActivity {
             return false;
         }
 
-        if(holesTemp < 0) {
+        if(holesTemp < 1) {
             Context context = getApplicationContext();
             CharSequence text = "You need at least one hole!";
             int duration = Toast.LENGTH_SHORT;
