@@ -51,9 +51,10 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="161dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="80dp"
+        android:textSize="18sp"
         android:fontFamily="@font/asap_bold"
         android:onClick="startClick"
         android:text="@string/start_text"

@@ -1,5 +1,6 @@
 package com.cspals.minigolfapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -18,6 +20,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,6 +40,8 @@ public class AddRemovePlayers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_remove_players);
+        ScrollView scrollView = findViewById(R.id.addRemoveScroll);
+        scrollView.setVerticalScrollBarEnabled(false);
 
         pageNameStrings = Scorecard.deepCopyStrList(Scorecard.nameStrings);
         pageScoreList = Scorecard.deepCopyStr2DArr(Scorecard.scoreList);
@@ -130,6 +135,7 @@ public class AddRemovePlayers extends AppCompatActivity {
             ColorStateList x = ColorStateList.valueOf(white);
             ViewCompat.setBackgroundTintList(addPlayerName, x);
             addPlayerName.setTextColor(white);
+            addPlayerName.setHintTextColor(white);
 
             addPlayer.addView(add);
             addPlayer.addView(addPlayerName);
@@ -189,7 +195,7 @@ public class AddRemovePlayers extends AppCompatActivity {
             init();
         }
         else{
-            addNameString = "Player " + pageNameStrings.size();
+            addNameString = "Player " + (pageNameStrings.size() + 1);
             pageNameStrings.add(addNameString);
             pageTotalList.add("0");
             pageNumPlayers++;

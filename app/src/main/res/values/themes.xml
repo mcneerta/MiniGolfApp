@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/sky_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/golf_course_green_dark</item>
+        <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/golf_course_green</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

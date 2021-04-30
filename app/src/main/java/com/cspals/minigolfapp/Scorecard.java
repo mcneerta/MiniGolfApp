@@ -42,7 +42,6 @@ public class Scorecard extends AppCompatActivity {
     public static String winnerName;
     public static boolean revisit = false;
     public static boolean handicap = false;
-    public static ArrayList<TextView> totalTextList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -61,50 +60,29 @@ public class Scorecard extends AppCompatActivity {
         namesV.setVerticalScrollBarEnabled(false);
         totalsV.setVerticalScrollBarEnabled(false);
 
-//        onMenuItemClick();
-
-        View.OnScrollChangeListener scrollChange2 = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                scoresH.setScrollX(x);
-            }
-        };
+        View.OnScrollChangeListener scrollChange2 = (view, x, y, oldX, oldY) -> scoresH.setScrollX(x);
         holesH.setOnScrollChangeListener(scrollChange2);
 
-        View.OnScrollChangeListener scrollChange = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                holesH.setScrollX(x);
-            }
-        };
+        View.OnScrollChangeListener scrollChange = (view, x, y, oldX, oldY) -> holesH.setScrollX(x);
         scoresH.setOnScrollChangeListener(scrollChange);
 
-        View.OnScrollChangeListener scrollChange3 = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                namesV.setScrollY(y);
-                totalsV.setScrollY(y);
-            }
+        View.OnScrollChangeListener scrollChange3 = (view, x, y, oldX, oldY) -> {
+            namesV.setScrollY(y);
+            totalsV.setScrollY(y);
         };
         scoresV.setOnScrollChangeListener(scrollChange3);
 
-        View.OnScrollChangeListener scrollChange4 = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                scoresV.setScrollY(y);
-                totalsV.setScrollY(y);
-            }
+        View.OnScrollChangeListener scrollChange4 = (view, x, y, oldX, oldY) -> {
+            scoresV.setScrollY(y);
+            totalsV.setScrollY(y);
         };
         namesV.setOnScrollChangeListener(scrollChange4);
 
-        View.OnScrollChangeListener scrollChange7 = new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int x, int y, int oldX, int oldY) {
-                scoresV.setScrollY(y);
-                namesV.setScrollY(y);
-            }
+        View.OnScrollChangeListener scrollChange7 = (view, x, y, oldX, oldY) -> {
+            scoresV.setScrollY(y);
+            namesV.setScrollY(y);
         };
-        totalsV.setOnScrollChangeListener(scrollChange4);
+        totalsV.setOnScrollChangeListener(scrollChange7);
 
         holesH.setHorizontalFadingEdgeEnabled(true);
         scoresH.setHorizontalFadingEdgeEnabled(true);
@@ -148,27 +126,6 @@ public class Scorecard extends AppCompatActivity {
         int pixelsV = (int) (density * 42);
         int pixelsH = (int) (density * 46.667);
 
-//        for(int i = 0; i < numPlayers; i++){
-//            if(totalList.get(i).getParent() != null) {
-//                ((TableRow) totalList.get(i).getParent()).removeView(totalList.get(i));
-//            }
-//        }
-
-
-//        for(int i = 0; i < numPlayers; i++) {
-//            for (int j = 0; j < numHoles; j++) {
-//                if (scoreList[i][j].getParent() != null) {
-//                    ((TableRow) scoreList[i][j].getParent()).removeView(scoreList[i][j]);
-//                }
-//            }
-//            if (handicap){
-//                if (scoreList[i][18].getParent() != null) {
-//                    ((TableRow) scoreList[i][18].getParent()).removeView(scoreList[i][18]);
-//
-//                }
-//            }
-//        }
-
         TableRow hRow = new TableRow(this);
         List<TextView> holeList = new LinkedList<>();
 
@@ -205,22 +162,6 @@ public class Scorecard extends AppCompatActivity {
             total.setGravity(Gravity.CENTER);
             total.setText(totalList.get(i));
             total.setTextSize(18);
-//            total.addTextChangedListener(new TextWatcher() {
-//                @Override
-//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                }
-//
-//                @Override
-//                public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                }
-//
-//                @Override
-//                public void afterTextChanged(Editable s) {
-//                    totalList.set(currentPlayer, total.getText().toString());
-//                }
-//            });
 
             tRow.addView(total);
             tableTotals.addView(tRow);
@@ -361,22 +302,6 @@ public class Scorecard extends AppCompatActivity {
             //String totalScore = 0;
             total.setText("0");
             total.setTextSize(18);
-//            total.addTextChangedListener(new TextWatcher() {
-//                @Override
-//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                }
-//
-//                @Override
-//                public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                }
-//
-//                @Override
-//                public void afterTextChanged(Editable s) {
-//                    totalList.set(currentPlayer, total.getText().toString());
-//                }
-//            });
             totalList.add("0");
             tRow.addView(total);
             tableTotals.addView(tRow);
