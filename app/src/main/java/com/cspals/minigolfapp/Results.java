@@ -61,7 +61,7 @@ public class Results extends AppCompatActivity {
         LinearLayout left = findViewById(R.id.LinearLayout1);
         LinearLayout right = findViewById(R.id.LinearLayout2);
 
-        for (int i = 0; i < Scorecard.totalList.size(); i++) {
+        for (int i = 0; i < ScorecardSetup.numPlayers/*Scorecard.totalList.size()*/; i++) {
             String playerName = Scorecard.nameStrings.get(i);
             int playerScore = Integer.parseInt(Scorecard.totalList.get(i));
             sortedResultsList.add(new PlayerResult(playerName, playerScore));

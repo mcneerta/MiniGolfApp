@@ -366,7 +366,9 @@ public class Scorecard extends AppCompatActivity {
             if(handicap) {
                 String handicapScore = scoreList[i][18];
                 if (handicapScore != null) {
-                    total += Integer.parseInt(handicapScore);
+                    if(!handicapScore.isEmpty()) {
+                        total += Integer.parseInt(handicapScore);
+                    }
                 }
             }
             totalList.set(i, Integer.toString(total));
@@ -433,7 +435,7 @@ public class Scorecard extends AppCompatActivity {
 
     public List<Integer> getTotalIntList() {
         List<Integer> totalIntList = new ArrayList<>();
-        for (int i = 0; i < totalList.size(); i++) {
+        for (int i = 0; i < ScorecardSetup.numPlayers; i++) {
             totalIntList.add(
                     Integer.parseInt(totalList.get(i)));
         }

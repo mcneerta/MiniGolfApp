@@ -206,11 +206,11 @@
         android:id="@+id/FinishButton"
         android:layout_width="161dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="64dp"
         android:fontFamily="@font/asap_bold"
         android:onClick="finishClick"
-        android:textSize="18sp"
         android:text="@string/finish_game"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
