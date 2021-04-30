@@ -33,7 +33,7 @@ public class ChangeScorecard extends AppCompatActivity {
 
 
     public void addParClick(View v){
-        startActivity(new Intent(ChangeScorecard.this, ChangePar.class));
+        //startActivity(new Intent(ChangeScorecard.this, ChangePar.class));
     }
 
     public void addHandicapClick(View v){
@@ -47,9 +47,6 @@ public class ChangeScorecard extends AppCompatActivity {
         }
         else{
             Scorecard.handicap = true;
-//            for(int i = 0; i < ScorecardSetup.numPlayers; i++) {
-//                Scorecard.scoreList[i][18] = "";
-//            }
             Context context = getApplicationContext();
             CharSequence text = "Handicap column added";
             int duration = Toast.LENGTH_SHORT;

@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void savedClick(View v){
-        startActivity(new Intent(MainActivity.this, SavedGames.class));
+       //startActivity(new Intent(MainActivity.this, SavedGames.class));
     }
 
 }

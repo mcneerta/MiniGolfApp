@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/change" android:title="@string/change_scorecard"/>
-    <item android:id="@+id/save" android:title="@string/save_game"/>
     <item android:id="@+id/help" android:title="@string/help"/>
 </menu>

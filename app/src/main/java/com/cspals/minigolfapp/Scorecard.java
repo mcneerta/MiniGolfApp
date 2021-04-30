@@ -446,33 +446,22 @@ public class Scorecard extends AppCompatActivity {
         Context wrapper = new ContextThemeWrapper(this, R.style.Popup);
         PopupMenu popup = new PopupMenu(wrapper, v);
         popup.inflate(R.menu.settings_popup);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.change:
-                        startActivity(new Intent(Scorecard.this, ChangeScorecard.class));
-                        return true;
-                    case R.id.save:
-                        //TODO: Save Game code
-                        return true;
-                    case R.id.help:
-                        startActivity(new Intent(Scorecard.this, Help.class));
-                        return true;
-                    default:
-                        return false;
-                }
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()){
+                case R.id.change:
+                    startActivity(new Intent(Scorecard.this, ChangeScorecard.class));
+                    return true;
+//                    case R.id.save:
+//                        //TODO: Save Game code
+//                        return true;
+                case R.id.help:
+                    startActivity(new Intent(Scorecard.this, Help.class));
+                    return true;
+                default:
+                    return false;
             }
         });
         popup.show();
-    }
-
-    public void saveProgress(){
-
-    }
-
-    public void backClick(View v){
-        startActivity(new Intent(Scorecard.this, MainActivity.class));
     }
 
     public void finishGameClick(View v){
